@@ -1,3 +1,7 @@
+import { base } from '$app/paths';
+
+const withBase = (path: string) => `${base}${path}`;
+
 export const navItems: Array<{ label: string; href: `/#${string}` }> = [
 	{ label: 'Home', href: '/#home' },
 	{ label: 'About', href: '/#about' },
@@ -166,42 +170,42 @@ export const scheduleDays = [
 export const sponsors = [
 	{
 		name: 'UniTBv',
-		logo: '/images/logos/Sponsor1-UniTBv.png',
+		logo: withBase('/images/logos/Sponsor1-UniTBv.png'),
 		alt: 'Transilvania University of Brașov logo'
 	},
 	{
 		name: 'Sponsor2',
-		logo: '/images/logos/Sponsor2.png',
+		logo: withBase('/images/logos/Sponsor2.png'),
 		alt: 'Sponsor 2 logo'
 	},
 	{
 		name: 'Sponsor3',
-		logo: '/images/logos/Sponsor3.png',
+		logo: withBase('/images/logos/Sponsor3.png'),
 		alt: 'Sponsor 3 logo'
 	},
 	{
 		name: 'Sponsor4',
-		logo: '/images/logos/Sponsor4.png',
+		logo: withBase('/images/logos/Sponsor4.png'),
 		alt: 'Sponsor 4 logo'
 	},
 	{
 		name: 'Sponsor5',
-		logo: '/images/logos/Sponsor5.png',
+		logo: withBase('/images/logos/Sponsor5.png'),
 		alt: 'Sponsor 5 logo'
 	},
 	{
 		name: 'Sponsor6',
-		logo: '/images/logos/Sponsor6.png',
+		logo: withBase('/images/logos/Sponsor6.png'),
 		alt: 'Sponsor 6 logo'
 	},
 	{
 		name: 'Sponsor7',
-		logo: '/images/logos/Sponsor7.png',
+		logo: withBase('/images/logos/Sponsor7.png'),
 		alt: 'Sponsor 7 logo'
 	},
 	{
 		name: 'Sponsor8',
-		logo: '/images/logos/Sponsor8.png',
+		logo: withBase('/images/logos/Sponsor8.png'),
 		alt: 'Sponsor 8 logo'
 	}
 ];
@@ -210,37 +214,37 @@ export const organizers = [
 	{
 		name: 'Bianca Nicoleta Crăciun',
 		title: 'Main Organiser',
-		photo: '/images/BESTies/BiancaMO.webp'
+		photo: withBase('/images/BESTies/BiancaMO.webp')
 	},
 	{
 		name: 'Dănuț Boloca',
 		title: 'Fundraising',
-		photo: '/images/BESTies/DanutFR.webp'
+		photo: withBase('/images/BESTies/DanutFR.webp')
 	},
 	{
 		name: 'Florin Deicu',
 		title: 'Public Relations',
-		photo: '/images/BESTies/FlorinPR.webp'
+		photo: withBase('/images/BESTies/FlorinPR.webp')
 	},
 	{
 		name: 'Bianca Milea',
 		title: 'PAX',
-		photo: '/images/BESTies/BiancaPAX.webp'
+		photo: withBase('/images/BESTies/BiancaPAX.webp')
 	},
 	{
 		name: 'Miruna Ungureanu',
 		title: 'Graphic Design',
-		photo: '/images/BESTies/MirunaGD.webp'
+		photo: withBase('/images/BESTies/MirunaGD.webp')
 	},
 	{
 		name: 'Rareș Taflan',
 		title: 'IT',
-		photo: '/images/BESTies/RaresIT.webp'
+		photo: withBase('/images/BESTies/RaresIT.webp')
 	},
 	{
 		name: 'Matei Voaideș',
 		title: 'Logistics',
-		photo: '/images/BESTies/MateiLog.webp'
+		photo: withBase('/images/BESTies/MateiLog.webp')
 	}
 ];
 

@@ -13,7 +13,7 @@ const config = {
 	},
 	kit: {
 		adapter: adapter({
-			fallback: '404.html'
+			fallback: 'index.html'
 		}),
 		paths: {
 			base: dev ? '' : '/btw2026-website'

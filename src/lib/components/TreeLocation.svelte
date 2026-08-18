@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import * as THREE from 'three';
 	import { GLTFLoader, OrbitControls } from 'three-stdlib';
 
@@ -12,6 +13,9 @@
 		if (!host || !canvasEl) {
 			return;
 		}
+
+		const isTouchViewport =
+			window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(max-width: 960px)').matches;
 
 		const leavesVS = /* glsl */ `
 			uniform sampler2D uNoiseMap;
@@ -88,9 +92,10 @@
 		const renderer = new THREE.WebGLRenderer({
 			canvas: canvasEl,
 			alpha: true,
-			antialias: true
+			antialias: !isTouchViewport,
+			powerPreference: 'high-performance'
 		});
-		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouchViewport ? 1.35 : 2));
 		renderer.outputColorSpace = THREE.SRGBColorSpace;
 		renderer.toneMapping = THREE.ReinhardToneMapping;
 		renderer.toneMappingExposure = 1.24;
@@ -160,6 +165,15 @@
 		controls.zoomSpeed = 0.45;
 		controls.enablePan = false;
 		controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+
+		if (isTouchViewport) {
+			camera.position.set(-7.35, 1.72, -11.35);
+			controls.target.set(1.5, 2.95, 0);
+			controls.enableRotate = false;
+			controls.enableZoom = false;
+			controls.enableDamping = false;
+			controls.autoRotate = false;
+		}
 		tree.group.position.copy(treeOffset);
 		scene.add(dlight01, fillLight, tree.group, pumpkinGroup, rayPlane);
 
@@ -228,7 +242,7 @@
 
 		async function addPumpkins() {
 			try {
-				const pumpkinAsset = await loader.loadAsync('/objects/pumpkin-5f977e.glb');
+				const pumpkinAsset = await loader.loadAsync(`${base}/objects/pumpkin-5f977e.glb`);
 				if (disposed) {
 					return;
 				}
@@ -437,6 +451,7 @@
 		display: block;
 		width: 100%;
 		height: 100%;
+		touch-action: pan-y;
 	}
 
 	.tree-preview {

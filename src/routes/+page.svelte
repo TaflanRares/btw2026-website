@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../css/home.css';
-	import { resolve } from '$app/paths';
+	import { base, resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	import LeafScene from '$lib/components/LeafScene.svelte';
 	import TreeLocation from '$lib/components/TreeLocation.svelte';
@@ -145,7 +145,7 @@
 				aria-label="BEST Training Week home"
 			>
 				<img
-					src="/images/logos/BTWLogoTransparent.png"
+					src={`${base}/images/logos/BTWLogoTransparent.png`}
 					alt="BEST Training Week logo"
 					class="site-brand"
 				/>
@@ -205,7 +205,7 @@
 
 			<div id="mobile-nav-options" class="mobile-nav" class:mobile-nav--open={navOpen}>
 				{#each navItems as item (item.href)}
-					<a href={resolve(item.href)} class="mobile-nav-link" onclick={() => (navOpen = false)}>
+					<a href={resolve(item.href)} class="nav-link mobile-nav-link" onclick={() => (navOpen = false)}>
 						<span>{item.label}</span>
 						<svg viewBox="0 0 24 24" aria-hidden="true" class="nav-arrow-icon">
 							<path
@@ -223,7 +223,7 @@
 					href={registerNowUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="mobile-nav-cta"
+					class="nav-cta mobile-nav-cta"
 					onclick={() => (navOpen = false)}
 				>
 					Register now
@@ -287,7 +287,7 @@
 			<div class="about-layout">
 				<div class="about-hero">
 					<img
-						src="/images/logos/BESTBrasovLogoBlack.png"
+						src={`${base}/images/logos/BESTBrasovLogoBlack.png`}
 						alt=""
 						aria-hidden="true"
 						class="about-hero-image"
@@ -502,7 +502,7 @@
 			<div class="footer-brand-wrap">
 				<a href="https://bestbrasov.ro/" target="_blank" rel="noopener noreferrer">
 					<img
-						src="/images/logos/BESTBrasovLogoBlack.png"
+							src={`${base}/images/logos/BESTBrasovLogoBlack.png`}
 						alt="BEST Brașov logo"
 						class="footer-brand"
 					/>

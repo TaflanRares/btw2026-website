@@ -1,8 +1,14 @@
 .page-shell {
 	overflow-x: clip;
 	min-height: 100vh;
+	width: 100%;
 	background: var(--page-bg);
 	color: var(--page-text);
+}
+
+html,
+body {
+	overflow-x: clip;
 }
 
 .page-glow {
@@ -186,10 +192,10 @@
 }
 
 .mobile-nav--open {
-	max-height: 24rem;
+	max-height: 19rem;
 	opacity: 1;
 	pointer-events: auto;
-	padding-top: 0.45rem;
+	padding-top: 0.25rem;
 }
 
 .mobile-nav-link,
@@ -197,41 +203,38 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0.72rem 0.82rem;
-	border-radius: 0.75rem;
+	border-radius: 0.6rem;
 	text-decoration: none;
-	font-size: 0.78rem;
-	font-weight: 800;
-	letter-spacing: 0.16em;
-	text-transform: uppercase;
 }
 
 .mobile-nav-link {
-	color: #6a4228;
-	background: rgba(255, 250, 242, 0.72);
-	border: 1px solid rgba(205, 133, 63, 0.34);
+	width: 100%;
+	padding: 0.34rem 0.56rem;
 }
 
 .mobile-nav-cta {
 	justify-content: center;
-	margin-top: 0.18rem;
-	color: #fff7ec;
-	background: linear-gradient(180deg, #d97524, #bf5a15);
+	margin-top: 0.05rem;
+	height: 1.95rem;
+	padding: 0 0.65rem;
 }
 
 @media (orientation: portrait) and (max-width: 960px) {
 	.site-nav {
 		display: grid;
 		grid-template-columns: auto auto;
-		gap: 0.75rem;
+		gap: 0.55rem;
 		width: 100%;
 		max-width: 100%;
-		border-radius: 1rem;
+		padding: 0.5rem 0.6rem;
+		border-radius: 0.85rem;
 	}
 
 	.nav-toggle {
 		display: inline-flex;
 		justify-self: end;
+		height: 2rem;
+		width: 2rem;
 	}
 
 	.nav-options,
@@ -241,31 +244,21 @@
 
 	.mobile-nav {
 		display: grid;
-	}
-}
-
-@media (orientation: portrait) and (max-width: 960px) {
-	.site-nav {
-		display: grid;
-		grid-template-columns: auto auto;
-		gap: 0.75rem;
-		width: 100%;
-		max-width: 100%;
-		border-radius: 1rem;
-	}
-
-	.nav-toggle {
-		display: inline-flex;
 		justify-self: end;
+		width: min(14.5rem, 76vw);
 	}
 
-	.nav-options,
-	.nav-cta {
-		display: none;
+	.mobile-nav--open {
+		max-height: 16.5rem;
 	}
 
-	.mobile-nav {
-		display: grid;
+	.mobile-nav-link {
+		padding: 0.28rem 0.46rem;
+	}
+
+	.mobile-nav-cta {
+		height: 1.82rem;
+		padding: 0 0.55rem;
 	}
 }
 
@@ -350,7 +343,16 @@
 	align-items: flex-start;
 	gap: 0.65rem;
 	flex-wrap: wrap;
+	justify-content: flex-start;
 	transform: translateX(0.18rem);
+}
+
+.cdt-flp__clock > .cdt-flp__group:first-child {
+	grid-column: auto;
+}
+
+.cdt-flp__clock > :not(:first-child) {
+	grid-row: auto;
 }
 
 .cdt-flp__group {
@@ -543,6 +545,10 @@
 	font-size: clamp(2.5rem, 4vw, 3rem);
 	font-weight: 900;
 	color: var(--page-text-dark);
+}
+
+#about .section-title {
+	font-size: clamp(2rem, 3.2vw, 2.35rem);
 }
 
 .about-layout {
@@ -1013,6 +1019,18 @@
 	.footer-copy {
 		text-align: center;
 	}
+
+	.footer-brand-wrap {
+		order: 1;
+	}
+
+	.footer-grid > div:first-child {
+		order: 2;
+	}
+
+	.footer-copy {
+		order: 3;
+	}
 }
 
 @media (orientation: portrait) and (max-width: 960px) {
@@ -1042,21 +1060,61 @@
 
 @media (max-width: 1024px) {
 	.hero-title-stack {
-		justify-items: center;
+		justify-items: start;
 	}
 
 	.hero-event-title {
 		max-width: 8.6ch;
-		text-align: center;
+		text-align: left;
 	}
 
 	.hero-short-description {
-		text-align: center;
+		text-align: left;
 	}
 
 	.cdt-flp__clock {
 		transform: translateX(0.1rem);
-		justify-content: center;
+		justify-content: flex-start;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 1024px) {
+	.cdt-flp__clock {
+		display: grid;
+		grid-template-columns: repeat(5, max-content);
+		column-gap: 0.65rem;
+		row-gap: 0.55rem;
+	}
+
+	.cdt-flp__clock > .cdt-flp__group:first-child {
+		grid-column: 1 / -1;
+		justify-self: flex-start;
+	}
+
+	.cdt-flp__clock > :not(:first-child) {
+		grid-row: 2;
+	}
+
+	.cdt-flp__group:first-child {
+		margin-right: 0;
+	}
+
+	.hero-home-copy {
+		justify-items: start;
+	}
+
+	.hero-title-stack {
+		justify-items: start;
+	}
+
+	.hero-event-title,
+	.hero-short-description {
+		text-align: left;
+	}
+
+	.cdt-flp__clock {
+		justify-content: flex-start;
+		transform: translateX(0.18rem);
 	}
 }
 
@@ -1259,6 +1317,32 @@
 
 	.collage-copy h3 {
 		font-size: 1rem;
+	}
+
+	.collage-card:nth-child(7) {
+		grid-column: 1 / -1;
+		justify-self: center;
+		width: min(15.75rem, 100%);
+	}
+}
+
+@media (orientation: portrait) and (max-width: 960px) {
+	.scroll-track {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		gap: 0.75rem 1rem;
+		transform: rotate(-3deg);
+	}
+
+	.sponsor-card {
+		height: 6.5rem;
+		width: 9.5rem;
+	}
+
+	.sponsor-logo {
+		height: 4.5rem;
+		max-width: 9.25rem;
 	}
 }
 
