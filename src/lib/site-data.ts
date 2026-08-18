@@ -17,7 +17,7 @@ export const eventInfo = {
 	dateLabel: '17–20 November 2026',
 	countdownTarget: '2026-11-17T09:00:00+02:00',
 	description:
-		'A week-long educational event for and by students of Transilvania University. Over XX trainers for our 19th edition'
+		'A week-long educational event for and by students of Transilvania University. XX Trainers for 4 days.'
 };
 
 export const scheduleDays = [
@@ -27,6 +27,7 @@ export const scheduleDays = [
 		summary: 'O scurta descriere a zilei',
 		sessions: [
 			{
+				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu A',
 				description: 'Descriere',
@@ -36,6 +37,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu B',
 				description:
@@ -46,6 +48,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu C',
 				description:
@@ -63,6 +66,7 @@ export const scheduleDays = [
 		summary: 'O scurta descriere a zilei',
 		sessions: [
 			{
+				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu A',
 				description: 'Descriere',
@@ -72,6 +76,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu B',
 				description:
@@ -82,6 +87,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu C',
 				description:
@@ -99,6 +105,7 @@ export const scheduleDays = [
 		summary: 'O scurta descriere a zilei',
 		sessions: [
 			{
+				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu A',
 				description: 'Descriere',
@@ -108,6 +115,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu B',
 				description:
@@ -118,6 +126,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu C',
 				description:
@@ -135,6 +144,7 @@ export const scheduleDays = [
 		summary: 'O scurta descriere a zilei',
 		sessions: [
 			{
+				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu A',
 				description: 'Descriere',
@@ -144,6 +154,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu B',
 				description:
@@ -154,6 +165,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
+				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu C',
 				description:

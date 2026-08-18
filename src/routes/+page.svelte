@@ -75,8 +75,19 @@
 	let LeafSceneComponent = $state<LazyComponent>(null);
 	let TreeLocationComponent = $state<LazyComponent>(null);
 	let treeLoadStarted = false;
+	let countdownTitle = $state('BEST TRAINING WEEK');
+	let countdownDateLabel = $state('16 - 19 November 2026');
 
-	const targetDate = new Date(eventInfo.countdownTarget);
+	const eventStartDate = new Date(eventInfo.countdownTarget);
+	const sessionTargets = scheduleDays
+		.flatMap((day) => day.sessions.map((session) => ({ session, day })))
+		.map(({ session, day }) => ({
+			...session,
+			date: new Date(session.date.replace(' Europe/Bucharest', '+02:00').replace(' ', 'T')),
+			dayLabel: day.label
+		}))
+		.filter((session) => !Number.isNaN(session.date.getTime()))
+		.sort((first, second) => first.date.getTime() - second.date.getTime());
 	const displayedSponsors = [...sponsors, ...sponsors];
 	const registerNowUrl = 'https://docs.google.com/forms/';
 	let activeScheduleDay = $state(0);
@@ -94,8 +105,33 @@
 		moveScheduleDay(activeScheduleDay + 1);
 	}
 
+	function formatSessionDate(date: Date) {
+		return new Intl.DateTimeFormat('en-GB', {
+			day: '2-digit',
+			month: 'long',
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit',
+			timeZone: 'Europe/Bucharest'
+		}).format(date);
+	}
+
 	function updateCountdown() {
-		const difference = Math.max(targetDate.getTime() - Date.now(), 0);
+		const now = Date.now();
+		const nextSession = now >= eventStartDate.getTime()
+			? sessionTargets.find((session) => session.date.getTime() > now)
+			: undefined;
+		const targetDate = nextSession?.date ?? eventStartDate;
+		const difference = Math.max(targetDate.getTime() - now, 0);
+
+		if (nextSession) {
+			countdownTitle = 'NEXT TRAINING';
+			countdownDateLabel = formatSessionDate(nextSession.date);
+		} else if (now < eventStartDate.getTime()) {
+			countdownTitle = 'BEST TRAINING WEEK';
+			countdownDateLabel = '16 - 19 November 2026';
+		}
+
 		const nextTimeLeft = {
 			days: Math.floor(difference / (1000 * 60 * 60 * 24)),
 			hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -342,11 +378,11 @@
 			<div class="hero-home-grid">
 				<div class="hero-home-copy">
 					<div class="hero-title-stack">
-						<h1 class="hero-event-title">BEST TRAINING WEEK</h1>
+						<h1 class="hero-event-title">{countdownTitle}</h1>
 					</div>
 
 					<div class="hero-countdown-stack">
-						<p class="hero-event-date">16 - 19 November 2026</p>
+						<p class="hero-event-date">{countdownDateLabel}</p>
 						<div class="cdt-flp" role="timer" aria-live="polite" aria-atomic="true">
 							<div class="cdt-flp__clock">
 								{#each flipGroups as group, groupIndex (group.label)}
