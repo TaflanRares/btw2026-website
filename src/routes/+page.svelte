@@ -485,69 +485,66 @@
 					<h2 class="section-title">Schedule</h2>
 				</div>
 
-				<div class="schedule-panel">
-					<div class="schedule-header">
-						<div>
-							<p class="schedule-label">Selected day</p>
-							<h3 class="schedule-title">{scheduleDays[activeScheduleDay].title}</h3>
-						</div>
-						<div class="schedule-nav-group">
-							<button type="button" aria-label="Previous day" class="schedule-btn" onclick={showPreviousDay}>
-								‹
-							</button>
-							<button type="button" aria-label="Next day" class="schedule-btn" onclick={showNextDay}>
-								›
-							</button>
-						</div>
-					</div>
+				<div class="schedule-stage">
+					<button
+						type="button"
+						class="schedule-edge schedule-edge--previous"
+						onclick={showPreviousDay}
+						aria-label="Show previous schedule day"
+					>
+						<span aria-hidden="true">‹</span>
+					</button>
+					<article class="schedule-day-card">
+						<header class="schedule-day-header">
+							<div>
+								<p class="schedule-day-label">{scheduleDays[activeScheduleDay].label}</p>
+								<h3 class="schedule-day-title">{scheduleDays[activeScheduleDay].title}</h3>
+							</div>
+							<span class="schedule-badge">{scheduleDays[activeScheduleDay].sessions.length} sessions</span>
+						</header>
 
-					<div class="schedule-carousel">
-						<div class="schedule-track" style:transform={`translateX(-${activeScheduleDay * 100}%)`}>
-							{#each scheduleDays as day, index (day.label)}
-								<article
-									class={`schedule-day-card ${activeScheduleDay === index ? 'schedule-day-card--active' : ''}`}
-								>
-									<div class="schedule-day-header">
-										<div>
-											<p class="schedule-day-label">{day.label}</p>
-											<h3 class="schedule-day-title">{day.title}</h3>
+						<p class="schedule-summary">{scheduleDays[activeScheduleDay].summary}</p>
+
+						<div class="session-list">
+							{#each scheduleDays[activeScheduleDay].sessions as session (session.time + session.title)}
+								<div class="session-item">
+									<div class="session-dot"></div>
+									<div class="session-content">
+										<h4 class="session-title">{session.title}</h4>
+										<div class="trainer-row">
+											<img src={session.trainerPhoto} alt={session.trainer} class="trainer-badge" />
+											{#if session.trainerSocial.url}
+												<a
+													href={session.trainerSocial.url}
+													target="_blank"
+													rel="noopener noreferrer"
+													class="trainer-name"
+													aria-label={`${session.trainer}: ${session.trainerSocial.label}`}
+												>
+													{session.trainer}
+												</a>
+											{:else}
+												<span class="trainer-name">{session.trainer}</span>
+											{/if}
 										</div>
-										<span class="schedule-badge">{day.sessions.length} sessions</span>
+										<p class="session-description">{session.description}</p>
 									</div>
-
-									<p class="schedule-summary">{day.summary}</p>
-
-									<div class="session-list">
-										{#each day.sessions as session (session.time + session.title)}
-											<div class="session-item">
-												<div class="session-dot"></div>
-												<div class="session-content">
-													<div class="session-meta">
-														<p class="session-time">{session.time}</p>
-														<span class="session-tag">{session.location}</span>
-													</div>
-
-													<h4 class="session-title">{session.title}</h4>
-													<p class="session-description">{session.description}</p>
-
-													<div class="trainer-row">
-														<span class="trainer-badge">
-															{session.trainer
-																.split(' ')
-																.map((part) => part[0])
-																.slice(0, 2)
-																.join('')}
-														</span>
-														<span class="trainer-name">{session.trainer}</span>
-													</div>
-												</div>
-											</div>
-										{/each}
+									<div class="session-meta">
+										<p class="session-time">{session.time}</p>
+										<span class="session-tag">{session.location}</span>
 									</div>
-								</article>
+								</div>
 							{/each}
 						</div>
-					</div>
+					</article>
+					<button
+						type="button"
+						class="schedule-edge schedule-edge--next"
+						onclick={showNextDay}
+						aria-label="Show next schedule day"
+					>
+						<span aria-hidden="true">›</span>
+					</button>
 				</div>
 			</div>
 		</section>

@@ -20,6 +20,7 @@ export const eventInfo = {
 		'A week-long educational event for and by students of Transilvania University. XX Trainers for 4 days.'
 };
 
+// training titles have to be distinct inside a session
 export const scheduleDays = [
 	{
 		label: '17.11.2026',
@@ -33,6 +34,7 @@ export const scheduleDays = [
 				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: 'https://www.instagram.com/', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
@@ -44,6 +46,7 @@ export const scheduleDays = [
 					'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
@@ -55,6 +58,7 @@ export const scheduleDays = [
 					'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
 			}
@@ -68,32 +72,35 @@ export const scheduleDays = [
 			{
 				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu A',
+				title: 'Titlu D',
 				description: 'Descriere',
 				location: 'Locatie',
-				trainer: 'Nume Trainer',
+				trainer: 'Nume Trainer diferit',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
 				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu B',
+				title: 'Titlu E',
 				description:
 					'Descriere',
 				location: 'Locatie',
-				trainer: 'Nume Trainer',
+				trainer: 'Nume Trainer diferit',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
 				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu C',
+				title: 'Titlu F',
 				description:
 					'Descriere',
 				location: 'Locatie',
-				trainer: 'Nume Trainer',
+				trainer: 'Nume Trainer diferit',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
 			}
@@ -107,32 +114,35 @@ export const scheduleDays = [
 			{
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu A',
+				title: 'Titlu G',
 				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu B',
+				title: 'Titlu H',
 				description:
 					'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu C',
+				title: 'Titlu I',
 				description:
 					'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
 			}
@@ -146,32 +156,35 @@ export const scheduleDays = [
 			{
 				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu A',
+				title: 'Titlu J',
 				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
 			},
 			{
 				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu B',
+				title: 'Titlu K',
 				description:
 					'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
 			},
 			{
 				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
-				title: 'Titlu C',
+				title: 'Titlu ETC',
 				description:
 					'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
 			}
