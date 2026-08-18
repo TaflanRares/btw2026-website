@@ -4,20 +4,30 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGXPQ9ZENE"></script>
 		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-			gtag('config', 'G-EGXPQ9ZENE');
+			window.addEventListener(
+				'load',
+				() => {
+					const analyticsScript = document.createElement('script');
+					analyticsScript.async = true;
+					analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-EGXPQ9ZENE';
+					document.head.appendChild(analyticsScript);
+
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						dataLayer.push(arguments);
+					}
+					gtag('js', new Date());
+					gtag('config', 'G-EGXPQ9ZENE');
+				},
+				{ once: true }
+			);
 		</script>
-		<link href="/btw2026-website/_app/immutable/entry/start.DU8XwWf3.js" rel="modulepreload">
-		<link href="/btw2026-website/_app/immutable/chunks/CjWpIXLB.js" rel="modulepreload">
+		<link href="/btw2026-website/_app/immutable/entry/start.CPJHuewj.js" rel="modulepreload">
+		<link href="/btw2026-website/_app/immutable/chunks/B3WtanY-.js" rel="modulepreload">
 		<link href="/btw2026-website/_app/immutable/chunks/CbEltUNJ.js" rel="modulepreload">
-		<link href="/btw2026-website/_app/immutable/entry/app.SLM6dY8w.js" rel="modulepreload">
+		<link href="/btw2026-website/_app/immutable/entry/app.Ct96YyFf.js" rel="modulepreload">
+		<link href="/btw2026-website/_app/immutable/chunks/HclGiUj8.js" rel="modulepreload">
 		<link href="/btw2026-website/_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
 		<link href="/btw2026-website/_app/immutable/nodes/0.DY3jKNsy.js" rel="modulepreload">
 		
@@ -27,7 +37,7 @@
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_1lyepfj = {
+					__sveltekit_f9lgil = {
 						base: "/btw2026-website",
 						assets: "/btw2026-website"
 					};
@@ -35,8 +45,8 @@
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("/btw2026-website/_app/immutable/entry/start.DU8XwWf3.js"),
-						import("/btw2026-website/_app/immutable/entry/app.SLM6dY8w.js")
+						import("/btw2026-website/_app/immutable/entry/start.CPJHuewj.js"),
+						import("/btw2026-website/_app/immutable/entry/app.Ct96YyFf.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
