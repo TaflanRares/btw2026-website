@@ -1,0 +1,43 @@
+.leaf-scene {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	overflow: visible;
+}
+
+.leaf {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 0 90% 0 90%;
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+		0 8px 16px rgba(120, 62, 18, 0.12);
+	transform-origin: center;
+	offset-rotate: auto;
+	offset-path: path('M 0 0');
+	offset-distance: 0%;
+	opacity: 1;
+	transition: opacity 160ms ease;
+}
+
+.leaf::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), transparent 45%);
+	border-radius: inherit;
+	transform: rotate(18deg);
+}
+
+.leaf::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1px;
+	height: 60%;
+	background: rgba(120, 62, 18, 0.4);
+	transform: translate(-50%, -50%) rotate(24deg);
+}

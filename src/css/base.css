@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+:root {
+	color-scheme: light;
+	--page-bg: #faebd7;
+	--page-surface: #fffaf2;
+	--page-surface-soft: #f5deb3;
+	--page-surface-strong: #d2691e;
+	--page-surface-muted: #cd853f;
+	--page-surface-light: #f7e7c8;
+	--page-text: #3b2a1d;
+	--page-text-dark: #3d270f;
+	--page-text-medium: #5e3a26;
+	--page-text-soft: #4e3427;
+	--page-accent: #8a4d1d;
+	--page-accent-deep: #d97524;
+	--page-accent-dark: #bf5a15;
+	--page-border: rgba(205, 133, 63, 0.35);
+	--page-shadow: rgba(122, 61, 19, 0.12);
+	--page-shadow-strong: rgba(122, 61, 19, 0.16);
+	--page-glow: rgba(210, 105, 30, 0.12);
+	--page-neutral: #fff7ec;
+	--page-brown: #43240f;
+}
+
+html,
+body {
+	overscroll-behavior: none;
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	font-family: 'Segoe UI', sans-serif;
+	background: var(--page-bg);
+	color: var(--page-text);
+}
