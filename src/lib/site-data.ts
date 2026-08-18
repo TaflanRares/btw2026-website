@@ -208,32 +208,32 @@ export const organizers = [
 	},
 	{
 		name: 'Dănuț Boloca',
-		title: 'Fundraising',
+		title: 'Fundraising Responsible',
 		photo: withBase('/images/BESTies/DanutFR.webp')
 	},
 	{
 		name: 'Florin Deicu',
-		title: 'Public Relations',
+		title: 'Public Relations Responsible',
 		photo: withBase('/images/BESTies/FlorinPR.webp')
 	},
 	{
 		name: 'Bianca Milea',
-		title: 'PAX',
+		title: 'Participants Experience Responsible',
 		photo: withBase('/images/BESTies/BiancaPAX.webp')
 	},
 	{
 		name: 'Miruna Ungureanu',
-		title: 'Graphic Design',
+		title: 'Graphic Design Responsible',
 		photo: withBase('/images/BESTies/MirunaGD.webp')
 	},
 	{
 		name: 'Rareș Taflan',
-		title: 'IT',
+		title: 'IT Responsible',
 		photo: withBase('/images/BESTies/RaresIT.webp')
 	},
 	{
 		name: 'Matei Voaideș',
-		title: 'Logistics',
+		title: 'Logistics Responsible',
 		photo: withBase('/images/BESTies/MateiLog.webp')
 	}
 ];

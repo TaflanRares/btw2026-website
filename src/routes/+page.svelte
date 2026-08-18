@@ -180,20 +180,14 @@
 
 		const removeTreeActivationListeners = () => {
 			window.removeEventListener('pointerdown', activateTree);
+			window.removeEventListener('pointermove', activateTree);
 			window.removeEventListener('keydown', activateTree);
-			window.removeEventListener('scroll', activateTree);
-			window.removeEventListener('load', activateTree);
 		};
 
 		if (!prefersReducedMotion && !saveData && !isMobileViewport) {
 			window.addEventListener('pointerdown', activateTree, { passive: true });
+			window.addEventListener('pointermove', activateTree, { passive: true, once: true });
 			window.addEventListener('keydown', activateTree);
-			window.addEventListener('scroll', activateTree, { passive: true });
-			if (document.readyState === 'complete') {
-				activateTree();
-			} else {
-				window.addEventListener('load', activateTree, { once: true });
-			}
 		}
 
 		const timer = setInterval(updateCountdown, 1000);
@@ -414,9 +408,8 @@
 			<div class="about-layout">
 				<div class="about-hero">
 					<img
-						src={`${base}/images/logos/BESTBrasovLogoBlack.png`}
-						alt=""
-						aria-hidden="true"
+						src={`${base}/images/BESTies/BESTGroupPhoto.webp`}
+						alt="BEST Brașov members"
 						class="about-hero-image"
 					/>
 				</div>
@@ -424,13 +417,12 @@
 				<div class="about-grid">
 					<div class="about-story">
 						<p class="about-copy">
-							BEST Brașov is a student non-profit organisation dedicated to creating meaningful
-							opportunities for young people through education, personal development, and
-							international collaboration.
+							BEST Brașov is a student non-profit organisation dedicated to developing students,
+							through educational involvement, complementary education and career support.
 						</p>
 						<p class="about-copy">
-							We bring together students, volunteers, and professionals to build a vibrant community
-							where ideas, skills, and friendships flourish across borders.
+							BEST Training Week, on it's XIX-th edition brings together students and
+							professionals with the goal of covering areas of interest.
 						</p>
 					</div>
 
@@ -527,7 +519,7 @@
 		<section id="sponsors" class="sponsors-section">
 			<div class="sponsors-shell">
 				<div class="section-heading">
-					<h2 class="section-title">Partners</h2>
+					<h2 class="section-title">Our Partners</h2>
 				</div>
 
 				<div class="sponsor-band">
@@ -551,10 +543,12 @@
 				<div class="organizer-collage">
 					{#each organizers as organizer, index (organizer.name)}
 						<article class="collage-card collage-card--{index % 6}">
-							<img src={organizer.photo} alt={organizer.name} class="collage-photo" />
-							<div class="collage-copy">
-								<h3 class="collage-name">{organizer.name}</h3>
-								<p class="collage-role">{organizer.title}</p>
+							<div class="collage-stamp">
+								<img src={organizer.photo} alt={organizer.name} class="collage-photo" />
+								<div class="collage-copy">
+									<h3 class="collage-name">{organizer.name}</h3>
+									<p class="collage-role">{organizer.title}</p>
+								</div>
 							</div>
 						</article>
 					{/each}

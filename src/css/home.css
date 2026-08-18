@@ -29,7 +29,7 @@ body {
 }
 
 .site-main {
-	padding-top: 5.1rem;
+	padding-top: 0;
 }
 
 .site-header {
@@ -652,13 +652,13 @@ body {
 
 .section-title {
 	margin-top: 1rem;
-	font-size: clamp(2.5rem, 4vw, 3rem);
+	font-size: clamp(3rem, 5vw, 4rem);
 	font-weight: 900;
-	color: var(--page-text-dark);
+	color: var(--page-brown);
 }
 
 #about .section-title {
-	font-size: clamp(2rem, 3.2vw, 2.35rem);
+	font-size: clamp(2.6rem, 4.2vw, 3.3rem);
 }
 
 .about-layout {
@@ -668,8 +668,8 @@ body {
 }
 
 .about-hero {
-	width: 100%;
-	height: 28rem;
+	width: min(100%, 58rem);
+	height: 34rem;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -685,10 +685,14 @@ body {
 
 .about-grid {
 	display: grid;
-	gap: 1rem;
+	column-gap: 2.25rem;
+	row-gap: 1rem;
 	margin-top: 1.5rem;
-	grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 0.27fr);
+	grid-template-columns: minmax(0, 48rem) 11.5rem;
 	align-items: start;
+	justify-content: center;
+	max-width: 62rem;
+	margin-inline: auto;
 }
 
 .about-story {
@@ -712,6 +716,7 @@ body {
 .stats-grid {
 	display: grid;
 	gap: 0.75rem;
+	width: 11.5rem;
 }
 
 .stat-card {
@@ -773,10 +778,12 @@ body {
 
 	.about-grid {
 		grid-template-columns: minmax(0, 1fr);
+		max-width: none;
 	}
 
 	.stats-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+		width: 100%;
 	}
 }
 
@@ -788,7 +795,34 @@ body {
 }
 
 .schedule-section {
-	background: rgba(245, 222, 179, 0.7);
+	--schedule-size: 10px;
+	--schedule-color-1: rgb(250, 235, 215);
+	--schedule-color-2: rgb(243, 221, 192);
+	--schedule-color-3: rgb(250, 235, 215);
+	--schedule-tile: 50% / calc(var(--schedule-size) * 7) calc(var(--schedule-size) * 24.6);
+	--schedule-offset: calc(var(--schedule-size) * -3.5) calc(var(--schedule-size) * -12.3);
+	--schedule-pattern:
+		conic-gradient(from 35deg at 88.75% 25%, var(--schedule-color-1) 0 110deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from 0deg at 0% 20.5%, var(--schedule-color-2) 0 35deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from -35deg at 39% 25%, var(--schedule-color-3) 0 70deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from -35deg at 63.5% 35.25%, var(--schedule-color-2) 0 70deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from -35deg at 100% 50%, var(--schedule-color-3) 0 35deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from 270deg at 50% 50%, var(--schedule-color-3) 0 55deg, var(--schedule-color-1) 0 180deg, #fff0 0 100%)
+			var(--schedule-tile);
+	background: var(--schedule-pattern), var(--schedule-pattern);
+	background-position:
+		var(--schedule-offset), var(--schedule-offset), var(--schedule-offset), var(--schedule-offset),
+		var(--schedule-offset), var(--schedule-offset), 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+	background-color: var(--schedule-color-1);
+	background-repeat: repeat;
+	box-shadow:
+		inset 0 3rem 2rem -2rem var(--page-bg),
+		inset 0 -3rem 2rem -2rem var(--page-bg);
 }
 
 .sponsors-section {
@@ -1209,7 +1243,7 @@ body {
 
 @media (orientation: portrait) and (max-width: 960px) {
 	.site-main {
-		padding-top: 5.7rem;
+		padding-top: 0;
 	}
 }
 
@@ -1343,8 +1377,8 @@ body {
 .organizer-collage {
 	display: grid;
 	grid-template-columns: repeat(16, minmax(0, 1fr));
-	grid-template-rows: repeat(2, minmax(0, 1fr));
-	gap: 0.7rem;
+	grid-template-rows: repeat(2, auto);
+	gap: 0.8rem;
 	max-width: 72rem;
 	margin: 0 auto;
 }
@@ -1371,31 +1405,28 @@ body {
 .collage-card {
 	--base-x: 0px;
 	--base-y: 0px;
+	--stamp-rotation: 0deg;
 	position: relative;
 	grid-column: span 4;
 	grid-row: auto;
-	aspect-ratio: 1 / 1;
-	overflow: hidden;
-	border-radius: 0.95rem;
-	border: 1px solid rgba(205, 133, 63, 0.35);
-	background: #fff8ec;
-	box-shadow: 0 12px 18px rgba(122, 61, 19, 0.1);
-	transform: translate(var(--base-x), var(--base-y)) scale(0.98);
+	overflow: visible;
+	background: transparent;
+	transform: translate(var(--base-x), var(--base-y)) rotate(var(--stamp-rotation)) scale(0.98);
 	z-index: 1;
-	transition:
-		transform 220ms ease,
-		box-shadow 220ms ease;
+	transition: transform 220ms ease;
 }
 
 .collage-card:hover {
-	transform: translate(var(--base-x), calc(var(--base-y) - 4px)) scale(1.02);
-	box-shadow: 0 20px 28px rgba(122, 61, 19, 0.14);
+	transform:
+		translate(var(--base-x), calc(var(--base-y) - 4px)) rotate(calc(var(--stamp-rotation) + 1.5deg))
+		scale(1.02);
 }
 
 .collage-card:nth-child(1) {
 	grid-row: 1;
 	grid-column: 1 / span 4;
 	--base-y: 4px;
+	--stamp-rotation: -1.2deg;
 	z-index: 2;
 }
 
@@ -1410,6 +1441,7 @@ body {
 	grid-row: 1;
 	grid-column: 9 / span 4;
 	--base-y: -3px;
+	--stamp-rotation: 1.1deg;
 	z-index: 4;
 }
 
@@ -1417,6 +1449,7 @@ body {
 	grid-row: 1;
 	grid-column: 13 / span 4;
 	--base-y: 2px;
+	--stamp-rotation: 0.8deg;
 	z-index: 2;
 }
 
@@ -1424,6 +1457,7 @@ body {
 	grid-row: 2;
 	grid-column: 3 / span 4;
 	--base-y: -4px;
+	--stamp-rotation: -1deg;
 	z-index: 5;
 }
 
@@ -1438,42 +1472,60 @@ body {
 	grid-row: 2;
 	grid-column: 11 / span 4;
 	--base-y: -3px;
+	--stamp-rotation: 1.3deg;
 	z-index: 4;
 }
 
 .collage-photo {
 	display: block;
 	width: 100%;
-	height: 100%;
+	height: 70%;
 	object-fit: cover;
+	-webkit-mask-image: radial-gradient(0.7rem 0.34rem at 0.35rem 100%, #0000 98%, #000) repeat-x;
+	-webkit-mask-size: 1.4rem 100%;
+	mask-image: radial-gradient(0.7rem 0.34rem at 0.35rem 100%, #0000 98%, #000) repeat-x;
+	mask-size: 1.4rem 100%;
+}
+
+.collage-stamp {
+	--stamp-radius: 14px;
+	display: flex;
+	flex-direction: column;
+	aspect-ratio: 4 / 5;
+	padding: var(--stamp-radius);
+	background: rgba(245, 222, 179, 0.7);
+	mask:
+		radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--stamp-radius)
+			var(--stamp-radius) / calc(2 * var(--stamp-radius)) calc(2 * var(--stamp-radius)),
+		conic-gradient(#000 0 0) content-box;
 }
 
 .collage-copy {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding: 0.75rem 0.8rem;
-	background: linear-gradient(180deg, rgba(61, 39, 15, 0), rgba(61, 39, 15, 0.78));
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0.45rem 0.25rem 0;
+	text-align: center;
 }
 
 .collage-copy h3 {
-	font-size: clamp(1rem, 1.55vw, 1.2rem);
+	font-size: clamp(1.08rem, 1.7vw, 1.35rem);
 	font-weight: 800;
 	line-height: 1.15;
-	color: #fff7e8;
+	color: var(--page-text-dark);
 }
 
 .collage-copy p {
 	margin-top: 0.25rem;
-	font-size: 0.68rem;
+	font-size: 0.78rem;
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: #f5d7a7;
+	color: var(--page-text-medium);
 }
 
-@media (max-width: 768px) {
+@media (orientation: portrait) and (max-width: 960px) {
 	.team-leaf-overlay {
 		right: -26rem;
 		bottom: -34rem;
@@ -1490,9 +1542,9 @@ body {
 	.collage-card:nth-child(n) {
 		--base-y: 0px;
 		--base-x: 0px;
+		--stamp-rotation: 0deg;
 		grid-column: span 1;
 		grid-row: auto;
-		aspect-ratio: 1 / 1;
 	}
 
 	.collage-copy h3 {
@@ -1502,7 +1554,7 @@ body {
 	.collage-card:nth-child(7) {
 		grid-column: 1 / -1;
 		justify-self: center;
-		width: min(15.75rem, 100%);
+		width: calc((100% - 0.75rem) / 2);
 	}
 }
 
