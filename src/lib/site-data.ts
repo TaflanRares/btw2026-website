@@ -6,7 +6,7 @@ export const navItems: Array<{ label: string; href: `/#${string}` }> = [
 	{ label: 'Home', href: '/#home' },
 	{ label: 'About', href: '/#about' },
 	{ label: 'Schedule', href: '/#schedule' },
-	{ label: 'Sponsors', href: '/#sponsors' },
+	{ label: 'Partners', href: '/#sponsors' },
 	{ label: 'Organizers', href: '/#organizers' }
 ];
 
@@ -197,16 +197,6 @@ export const sponsors = [
 		name: 'Sponsor6',
 		logo: withBase('/images/logos/Sponsor6.png'),
 		alt: 'Sponsor 6 logo'
-	},
-	{
-		name: 'Sponsor7',
-		logo: withBase('/images/logos/Sponsor7.png'),
-		alt: 'Sponsor 7 logo'
-	},
-	{
-		name: 'Sponsor8',
-		logo: withBase('/images/logos/Sponsor8.png'),
-		alt: 'Sponsor 8 logo'
 	}
 ];
 

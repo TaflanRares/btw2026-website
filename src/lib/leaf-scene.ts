@@ -102,12 +102,20 @@ export function createLeafScene(root: HTMLElement) {
 
 	function updateLeaf(leaf: HTMLElement, index: number, currentScroll: number, totalRange: number) {
 		const definition = leafDefinitions[index % leafDefinitions.length];
+		const variant = Math.floor(index / leafDefinitions.length);
 		const travelProgress = clamp(currentScroll / (totalRange * 1.3), 0, 1);
-		const eased = definition.start + (definition.end - definition.start) * travelProgress;
+		const eased = clamp(
+			definition.start + (definition.end - definition.start) * travelProgress + variant * 0.07,
+			0,
+			1
+		);
 
 		leaf.style.setProperty('opacity', String(eased > 0 && eased < 0.98 ? '1' : '0'));
 		leaf.style.setProperty('offset-distance', `${eased * 100}%`);
-		leaf.style.setProperty('transform', `rotate(${definition.rotation + travelProgress * 260}deg)`);
+		leaf.style.setProperty(
+			'transform',
+			`rotate(${definition.rotation + travelProgress * 260 + variant * 18}deg)`
+		);
 	}
 
 	function update() {
@@ -130,6 +138,7 @@ export function createLeafScene(root: HTMLElement) {
 
 	leaves.forEach((leaf, index) => {
 		const definition = leafDefinitions[index % leafDefinitions.length];
+		const variant = Math.floor(index / leafDefinitions.length);
 		leaf.style.setProperty('offset-path', `path("${definition.path}")`);
 		leaf.style.setProperty('offset-rotate', 'auto');
 		leaf.style.setProperty(
@@ -137,8 +146,8 @@ export function createLeafScene(root: HTMLElement) {
 			`linear-gradient(135deg, ${definition.color}, rgba(255,255,255,0.8))`
 		);
 		leaf.style.setProperty('opacity', '1');
-		leaf.style.setProperty('width', `${definition.size}px`);
-		leaf.style.setProperty('height', `${definition.size * 1.35}px`);
+		leaf.style.setProperty('width', `${definition.size * (1 - variant * 0.12)}px`);
+		leaf.style.setProperty('height', `${definition.size * (1 - variant * 0.12) * 1.35}px`);
 	});
 
 	recalcLayout();

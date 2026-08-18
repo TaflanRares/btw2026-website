@@ -4,7 +4,7 @@
 	import '../../css/leaf-scene.css';
 
 	let scene: HTMLDivElement | undefined;
-	const leaves = Array.from({ length: 8 }, (_, index) => index + 1);
+	const leaves = Array.from({ length: 12 }, (_, index) => index + 1);
 
 	onMount(() => {
 		if (!scene) {

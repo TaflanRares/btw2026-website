@@ -117,6 +117,10 @@
 		timeLeft = nextTimeLeft;
 	}
 
+	function scrollToAbout() {
+		document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
 	function scheduleLeafSceneLoad() {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		const saveData =
@@ -154,10 +158,15 @@
 	}
 
 	onMount(() => {
+		if (!window.location.hash) {
+			window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#home`);
+		}
+
 		updateCountdown();
 		scheduleLeafSceneLoad();
 
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const isMobileViewport = window.matchMedia('(max-width: 960px)').matches;
 		const saveData =
 			typeof navigator !== 'undefined' && 'connection' in navigator
 				? (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
@@ -173,12 +182,18 @@
 			window.removeEventListener('pointerdown', activateTree);
 			window.removeEventListener('keydown', activateTree);
 			window.removeEventListener('scroll', activateTree);
+			window.removeEventListener('load', activateTree);
 		};
 
-		if (!prefersReducedMotion && !saveData) {
+		if (!prefersReducedMotion && !saveData && !isMobileViewport) {
 			window.addEventListener('pointerdown', activateTree, { passive: true });
 			window.addEventListener('keydown', activateTree);
 			window.addEventListener('scroll', activateTree, { passive: true });
+			if (document.readyState === 'complete') {
+				activateTree();
+			} else {
+				window.addEventListener('load', activateTree, { once: true });
+			}
 		}
 
 		const timer = setInterval(updateCountdown, 1000);
@@ -230,12 +245,22 @@
 			>
 				<svg viewBox="0 0 24 24" aria-hidden="true" class="nav-menu-icon">
 					<path
-						d="M4 8h16M4 16h16"
+						d="M4 8h16"
 						fill="none"
 						stroke="currentColor"
 						stroke-width="2.2"
 						stroke-linecap="round"
-						class:nav-toggle-line-top={navOpen}
+						class="nav-toggle-line nav-toggle-line--top"
+						class:nav-toggle-line--open={navOpen}
+					/>
+					<path
+						d="M4 16h16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.2"
+						stroke-linecap="round"
+						class="nav-toggle-line nav-toggle-line--bottom"
+						class:nav-toggle-line--open={navOpen}
 					/>
 				</svg>
 			</button>
@@ -304,42 +329,56 @@
 	<main class="site-main">
 		<section id="home" class="hero-section">
 			<div class="hero-tree-background">
+				<img
+					src="https://raw.githubusercontent.com/ceramicSoda/treeshader/main/assets/preview.png"
+					alt=""
+					aria-hidden="true"
+					class="hero-tree-preview"
+					fetchpriority="high"
+					decoding="async"
+				/>
 				{#if TreeLocationComponent}
-					<TreeLocationComponent />
+					<div class="hero-tree-scene"><TreeLocationComponent /></div>
 				{/if}
 			</div>
 			<div class="hero-overlay"></div>
+			{#if LeafSceneComponent}
+				<div class="hero-leaf-overlay" aria-hidden="true"><LeafSceneComponent /></div>
+			{/if}
 			<div class="hero-home-grid">
 				<div class="hero-home-copy">
 					<div class="hero-title-stack">
 						<h1 class="hero-event-title">BEST TRAINING WEEK</h1>
 					</div>
 
-					<div class="cdt-flp" role="timer" aria-live="polite" aria-atomic="true">
-						<div class="cdt-flp__clock">
-							{#each flipGroups as group, groupIndex (group.label)}
-								<div class="cdt-flp__group">
-									<div class="cdt-flp__digits">
-										{#each group.keys as key (key)}
-											{@const current = flipDigits[key]}
-											{@const previous = prevFlipDigits[key]}
-											{@const changed = current !== previous}
-											{#key `${key}-${flipVersions[key]}`}
-												<div class={`cdt-flp__flap ${changed ? 'cdt-flp--go' : ''}`}>
-													<div class="cdt-flp__card cdt-flp__top"><span>{current}</span></div>
-													<div class="cdt-flp__card cdt-flp__bottom"><span>{current}</span></div>
-													<div class="cdt-flp__flip-top"><span>{previous}</span></div>
-													<div class="cdt-flp__flip-bottom"><span>{current}</span></div>
-												</div>
-											{/key}
-										{/each}
+					<div class="hero-countdown-stack">
+						<p class="hero-event-date">16 - 19 November 2026</p>
+						<div class="cdt-flp" role="timer" aria-live="polite" aria-atomic="true">
+							<div class="cdt-flp__clock">
+								{#each flipGroups as group, groupIndex (group.label)}
+									<div class="cdt-flp__group">
+										<div class="cdt-flp__digits">
+											{#each group.keys as key (key)}
+												{@const current = flipDigits[key]}
+												{@const previous = prevFlipDigits[key]}
+												{@const changed = current !== previous}
+												{#key `${key}-${flipVersions[key]}`}
+													<div class={`cdt-flp__flap ${changed ? 'cdt-flp--go' : ''}`}>
+														<div class="cdt-flp__card cdt-flp__top"><span>{current}</span></div>
+														<div class="cdt-flp__card cdt-flp__bottom"><span>{current}</span></div>
+														<div class="cdt-flp__flip-top"><span>{previous}</span></div>
+														<div class="cdt-flp__flip-bottom"><span>{current}</span></div>
+													</div>
+												{/key}
+											{/each}
+										</div>
+										<span class="cdt-flp__glabel">{group.label}</span>
 									</div>
-									<span class="cdt-flp__glabel">{group.label}</span>
-								</div>
-								{#if groupIndex > 0 && groupIndex < flipGroups.length - 1}
-									<span class="cdt-flp__colon" aria-hidden="true">:</span>
-								{/if}
-							{/each}
+									{#if groupIndex > 0 && groupIndex < flipGroups.length - 1}
+										<span class="cdt-flp__colon" aria-hidden="true">:</span>
+									{/if}
+								{/each}
+							</div>
 						</div>
 					</div>
 					<p class="hero-short-description">{eventInfo.description}</p>
@@ -347,12 +386,29 @@
 
 				<div class="hero-tree-spacer" aria-hidden="true"></div>
 			</div>
+			<button
+				type="button"
+				class="hero-scroll-prompt"
+				onclick={scrollToAbout}
+				aria-label="Scroll to About us"
+				title="Scroll to About us"
+			>
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path
+						d="m6 9 6 6 6-6"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</button>
 		</section>
 
 		<section id="about" class="content-section">
 			<div class="section-heading">
-				<p class="section-kicker">About us</p>
-				<h2 class="section-title">Who we are</h2>
+				<h2 class="section-title">About us</h2>
 			</div>
 
 			<div class="about-layout">
@@ -393,10 +449,12 @@
 		</section>
 
 		<section id="schedule" class="schedule-section">
+			{#if LeafSceneComponent}
+				<div class="schedule-leaf-overlay" aria-hidden="true"><LeafSceneComponent /></div>
+			{/if}
 			<div class="schedule-inner">
 				<div class="section-heading">
-					<p class="section-kicker">Schedule</p>
-					<h2 class="section-title">Event programme</h2>
+					<h2 class="section-title">Schedule</h2>
 				</div>
 
 				<div class="schedule-panel">
@@ -469,8 +527,7 @@
 		<section id="sponsors" class="sponsors-section">
 			<div class="sponsors-shell">
 				<div class="section-heading">
-					<p class="section-kicker">Partners</p>
-					<h2 class="section-title">Our sponsors</h2>
+					<h2 class="section-title">Partners</h2>
 				</div>
 
 				<div class="sponsor-band">
@@ -488,7 +545,6 @@
 		<section id="organizers" class="organizers-section">
 			<div class="organizers-content">
 				<div class="section-heading">
-					<p class="section-kicker">Organizers</p>
 					<h2 class="section-title">Event team</h2>
 				</div>
 

@@ -10,7 +10,7 @@
 .leaf {
 	position: absolute;
 	left: 0;
-	top: 0;
+	top: 8rem;
 	border-radius: 0 90% 0 90%;
 	box-shadow:
 		inset 0 0 0 1px rgba(255, 255, 255, 0.25),
