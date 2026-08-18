@@ -182,12 +182,21 @@ body {
 
 .mobile-nav {
 	display: none;
-	grid-column: 1 / -1;
+	position: absolute;
+	top: calc(100% + 0.2rem);
+	right: 0;
+	z-index: 8;
+	width: min(14.5rem, 76vw);
 	gap: 0.35rem;
 	max-height: 0;
 	opacity: 0;
 	pointer-events: none;
 	overflow: hidden;
+	padding: 0;
+	border-radius: 0.7rem;
+	background: rgba(250, 235, 215, 0.92);
+	backdrop-filter: blur(8px);
+	box-shadow: 0 10px 20px rgba(122, 61, 19, 0.12);
 	transition: max-height 240ms ease, opacity 180ms ease;
 }
 
@@ -195,7 +204,7 @@ body {
 	max-height: 19rem;
 	opacity: 1;
 	pointer-events: auto;
-	padding-top: 0.25rem;
+	padding: 0.3rem;
 }
 
 .mobile-nav-link,
@@ -245,7 +254,6 @@ body {
 	.mobile-nav {
 		display: grid;
 		justify-self: end;
-		width: min(14.5rem, 76vw);
 	}
 
 	.mobile-nav--open {
@@ -514,6 +522,8 @@ body {
 	position: absolute;
 	inset: 0;
 	z-index: 0;
+	background: #f4dfc5 url('https://raw.githubusercontent.com/ceramicSoda/treeshader/main/assets/preview.png')
+		left center / cover no-repeat;
 }
 
 .content-section,
@@ -558,16 +568,16 @@ body {
 }
 
 .about-hero {
+	width: 100%;
+	aspect-ratio: 19 / 6;
+	margin: 0 auto;
 	overflow: hidden;
-	border: 1px solid rgba(205, 133, 63, 0.4);
-	border-radius: 2rem;
-	background: rgba(245, 222, 179, 0.5);
-	box-shadow: 0 10px 25px rgba(122, 61, 19, 0.08);
 }
 
 .about-hero-image {
 	display: block;
-	height: 280px;
+	height: 100%;
+	min-height: 0;
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
@@ -577,20 +587,16 @@ body {
 	display: grid;
 	gap: 1rem;
 	margin-top: 1.5rem;
-	grid-template-columns: 1.2fr 0.8fr;
+	grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 0.27fr);
 	align-items: start;
 }
 
 .about-story {
-	border: 1px solid rgba(205, 133, 63, 0.4);
-	border-radius: 2rem;
-	background: rgba(245, 222, 179, 0.5);
-	padding: 1.5rem;
-	box-shadow: 0 10px 25px rgba(122, 61, 19, 0.08);
+	background: transparent;
 }
 
 .about-copy {
-	font-size: 0.86rem;
+	font-size: 1rem;
 	font-weight: 600;
 	letter-spacing: 0.12em;
 	line-height: 1.9;
@@ -608,6 +614,10 @@ body {
 }
 
 .stat-card {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: center;
+	gap: 0.75rem;
 	border-radius: 1.25rem;
 	padding: 1rem;
 	color: #fffaf2;
@@ -623,16 +633,48 @@ body {
 }
 
 .stat-number {
-	font-size: 2rem;
+	font-size: 3rem;
 	font-weight: 900;
+	line-height: 0.9;
 }
 
 .stat-label {
-	margin-top: 0.5rem;
-	font-size: 0.62rem;
-	letter-spacing: 0.2em;
+	max-width: 9ch;
+	margin: 0;
+	font-size: 0.84rem;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+	line-height: 1.45;
 	text-transform: uppercase;
 	color: #f6d7b2;
+}
+
+.stat-label span {
+	display: block;
+	white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+	.about-layout {
+		padding: 0 1rem;
+	}
+
+	.about-hero {
+		width: 100%;
+	}
+
+	.about-hero-image {
+		height: 100%;
+		min-height: 0;
+	}
+
+	.about-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.stats-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 }
 
 .content-section,
@@ -922,10 +964,10 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1.5rem;
+	gap: 1rem;
 	max-width: 80rem;
 	margin: 0 auto;
-	padding: 3rem 1rem;
+	padding: 1.75rem 1rem;
 }
 
 .footer-grid > div:first-child,
@@ -944,8 +986,8 @@ body {
 .social-links {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.75rem;
-	margin-top: 0.9rem;
+	gap: 0.5rem;
+	margin-top: 0.55rem;
 	justify-content: flex-start;
 }
 
@@ -971,7 +1013,7 @@ body {
 }
 
 .footer-brand {
-	height: 5rem;
+	height: 3.75rem;
 	width: auto;
 	object-fit: contain;
 }
@@ -1003,6 +1045,25 @@ body {
 }
 
 @media (max-width: 768px) {
+	html,
+	body,
+	.page-shell,
+	.site-header,
+	.site-main,
+	.hero-home-grid,
+	.content-section,
+	.schedule-section,
+	.sponsors-section,
+	.organizers-section,
+	.site-footer,
+	.footer-grid,
+	.schedule-inner,
+	.organizers-content,
+	.sponsors-shell {
+		width: 100%;
+		max-width: 100vw;
+	}
+
 	.footer-grid {
 		flex-direction: column;
 		text-align: center;

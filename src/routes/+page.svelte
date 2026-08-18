@@ -2,8 +2,6 @@
 	import '../css/home.css';
 	import { base, resolve } from '$app/paths';
 	import { onMount } from 'svelte';
-	import LeafScene from '$lib/components/LeafScene.svelte';
-	import TreeLocation from '$lib/components/TreeLocation.svelte';
 	import {
 		eventInfo,
 		navItems,
@@ -68,11 +66,15 @@
 		seconds: 0
 	};
 	const initialFlipDigits = getFlipDigits(initialTimeLeft);
+	type LazyComponent = any;
 
 	let timeLeft = $state(initialTimeLeft);
 	let flipDigits = $state<Record<FlipKey, string>>({ ...initialFlipDigits });
 	let prevFlipDigits = $state<Record<FlipKey, string>>({ ...initialFlipDigits });
 	let flipVersions = $state<Record<FlipKey, number>>(createFlipVersions());
+	let LeafSceneComponent = $state<LazyComponent>(null);
+	let TreeLocationComponent = $state<LazyComponent>(null);
+	let treeLoadStarted = false;
 
 	const targetDate = new Date(eventInfo.countdownTarget);
 	const displayedSponsors = [...sponsors, ...sponsors];
@@ -115,11 +117,76 @@
 		timeLeft = nextTimeLeft;
 	}
 
+	function scheduleLeafSceneLoad() {
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const saveData =
+			typeof navigator !== 'undefined' && 'connection' in navigator
+				? (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+					?.saveData === true
+				: false;
+
+		if (prefersReducedMotion || saveData) {
+			return;
+		}
+
+		const load = async () => {
+			const leafModule = await import('$lib/components/LeafScene.svelte');
+			LeafSceneComponent = leafModule.default;
+		};
+
+		if ('requestIdleCallback' in window) {
+			(window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number })
+				.requestIdleCallback(() => void load(), { timeout: 1500 });
+			return;
+		}
+
+		globalThis.setTimeout(() => void load(), 320);
+	}
+
+	async function loadTreeScene() {
+		if (treeLoadStarted || TreeLocationComponent) {
+			return;
+		}
+
+		treeLoadStarted = true;
+		const treeModule = await import('$lib/components/TreeLocation.svelte');
+		TreeLocationComponent = treeModule.default;
+	}
+
 	onMount(() => {
 		updateCountdown();
+		scheduleLeafSceneLoad();
+
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const saveData =
+			typeof navigator !== 'undefined' && 'connection' in navigator
+				? (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+					?.saveData === true
+				: false;
+
+		const activateTree = () => {
+			void loadTreeScene();
+			removeTreeActivationListeners();
+		};
+
+		const removeTreeActivationListeners = () => {
+			window.removeEventListener('pointerdown', activateTree);
+			window.removeEventListener('keydown', activateTree);
+			window.removeEventListener('scroll', activateTree);
+		};
+
+		if (!prefersReducedMotion && !saveData) {
+			window.addEventListener('pointerdown', activateTree, { passive: true });
+			window.addEventListener('keydown', activateTree);
+			window.addEventListener('scroll', activateTree, { passive: true });
+		}
+
 		const timer = setInterval(updateCountdown, 1000);
 
-		return () => clearInterval(timer);
+		return () => {
+			clearInterval(timer);
+			removeTreeActivationListeners();
+		};
 	});
 </script>
 
@@ -135,7 +202,9 @@
 	<div aria-hidden="true" class="page-glow">
 		<div class="page-glow-orb"></div>
 	</div>
-	<LeafScene />
+	{#if LeafSceneComponent}
+		<LeafSceneComponent />
+	{/if}
 	<header class="site-header">
 		<nav class="site-nav">
 			<a
@@ -235,7 +304,9 @@
 	<main class="site-main">
 		<section id="home" class="hero-section">
 			<div class="hero-tree-background">
-				<TreeLocation />
+				{#if TreeLocationComponent}
+					<TreeLocationComponent />
+				{/if}
 			</div>
 			<div class="hero-overlay"></div>
 			<div class="hero-home-grid">
@@ -310,7 +381,7 @@
 					<div class="stats-grid">
 						<div class="stat-card stat-card--accent">
 							<p class="stat-number">29</p>
-							<p class="stat-label">Years of activity</p>
+							<p class="stat-label"><span>Years of</span><span>activity</span></p>
 						</div>
 						<div class="stat-card stat-card--secondary">
 							<p class="stat-number">85</p>
@@ -434,7 +505,9 @@
 				</div>
 			</div>
 			<div class="team-leaf-overlay" aria-hidden="true">
-				<LeafScene />
+				{#if LeafSceneComponent}
+					<LeafSceneComponent />
+				{/if}
 			</div>
 		</section>
 	</main>

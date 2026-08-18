@@ -89,30 +89,43 @@ function clamp(value: number, min: number, max: number) {
 
 export function createLeafScene(root: HTMLElement) {
 	const leaves = Array.from(root.querySelectorAll<HTMLElement>('[data-leaf-index]'));
-	const documentHeight = () =>
-		Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, 1);
+	let startOffset = root.offsetTop;
+	let range = 1;
+	let frameRequested = false;
 
-	function updateLeaf(leaf: HTMLElement, index: number) {
+	const documentHeight = () => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, 1);
+
+	function recalcLayout() {
+		startOffset = root.offsetTop;
+		range = Math.max(documentHeight() - startOffset - window.innerHeight * 0.35, 1);
+	}
+
+	function updateLeaf(leaf: HTMLElement, index: number, currentScroll: number, totalRange: number) {
 		const definition = leafDefinitions[index % leafDefinitions.length];
-		const startOffset = root.offsetTop;
-		const range = Math.max(documentHeight() - startOffset - window.innerHeight * 0.35, 1);
-		const currentScroll = clamp(
-			window.scrollY - startOffset + window.innerHeight * 0.05,
-			0,
-			range * 1.3
-		);
-		const travelProgress = clamp(currentScroll / (range * 1.3), 0, 1);
+		const travelProgress = clamp(currentScroll / (totalRange * 1.3), 0, 1);
 		const eased = definition.start + (definition.end - definition.start) * travelProgress;
 
 		leaf.style.setProperty('opacity', String(eased > 0 && eased < 0.98 ? '1' : '0'));
 		leaf.style.setProperty('offset-distance', `${eased * 100}%`);
 		leaf.style.setProperty('transform', `rotate(${definition.rotation + travelProgress * 260}deg)`);
-		leaf.style.setProperty('width', `${definition.size}px`);
-		leaf.style.setProperty('height', `${definition.size * 1.35}px`);
 	}
 
 	function update() {
-		leaves.forEach((leaf, index) => updateLeaf(leaf, index));
+		const currentScroll = clamp(
+			window.scrollY - startOffset + window.innerHeight * 0.05,
+			0,
+			range * 1.3
+		);
+		leaves.forEach((leaf, index) => updateLeaf(leaf, index, currentScroll, range));
+		frameRequested = false;
+	}
+
+	function scheduleUpdate() {
+		if (frameRequested) {
+			return;
+		}
+		frameRequested = true;
+		requestAnimationFrame(update);
 	}
 
 	leaves.forEach((leaf, index) => {
@@ -124,12 +137,18 @@ export function createLeafScene(root: HTMLElement) {
 			`linear-gradient(135deg, ${definition.color}, rgba(255,255,255,0.8))`
 		);
 		leaf.style.setProperty('opacity', '1');
+		leaf.style.setProperty('width', `${definition.size}px`);
+		leaf.style.setProperty('height', `${definition.size * 1.35}px`);
 	});
 
+	recalcLayout();
 	update();
 
-	const onScroll = () => requestAnimationFrame(update);
-	const onResize = () => requestAnimationFrame(update);
+	const onScroll = () => scheduleUpdate();
+	const onResize = () => {
+		recalcLayout();
+		scheduleUpdate();
+	};
 
 	window.addEventListener('scroll', onScroll, { passive: true });
 	window.addEventListener('resize', onResize);

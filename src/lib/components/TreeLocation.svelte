@@ -95,7 +95,7 @@
 			antialias: !isTouchViewport,
 			powerPreference: 'high-performance'
 		});
-		renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouchViewport ? 1.35 : 2));
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouchViewport ? 1.2 : 1.5));
 		renderer.outputColorSpace = THREE.SRGBColorSpace;
 		renderer.toneMapping = THREE.ReinhardToneMapping;
 		renderer.toneMappingExposure = 1.24;
@@ -253,12 +253,15 @@
 				const sourceHeight = Math.max(sourceSize.y, 0.001);
 				const baseScale = 0.42 / sourceHeight;
 				const baseCenter = new THREE.Vector3(treeOffset.x + 0.32, 0.52, treeOffset.z + 0.28);
+				const pumpkinPlacements = [
+					{ offset: [-0.92, 0.03, 0.62], scale: 0.92, rotationY: 0.35, rotationZ: -0.03 },
+					{ offset: [1.1, 0.04, 0.26], scale: 1.05, rotationY: 2.4, rotationZ: 0.02 },
+					{ offset: [0.24, 0.01, -0.9], scale: 0.84, rotationY: 4.65, rotationZ: -0.02 },
+					{ offset: [-0.28, 0.05, 1.08], scale: 1.12, rotationY: 5.5, rotationZ: 0.04 }
+				];
 
-				for (let i = 0; i < 5; i++) {
+				for (const placement of pumpkinPlacements) {
 					const pumpkin = pumpkinSource.clone(true);
-					const angle = Math.random() * Math.PI * 2;
-					const radius = 1 + Math.random() * 1.5;
-					const sizeVariance = 0.82 + Math.random() * 0.42;
 
 					pumpkin.traverse((node) => {
 						if (!(node instanceof THREE.Mesh)) {
@@ -274,14 +277,14 @@
 						}
 					});
 
-					pumpkin.scale.setScalar(baseScale * sizeVariance);
+					pumpkin.scale.setScalar(baseScale * placement.scale);
 					pumpkin.position.set(
-						baseCenter.x + Math.cos(angle) * radius,
-						baseCenter.y + Math.random() * 0.08,
-						baseCenter.z + Math.sin(angle) * radius * 0.9
+						baseCenter.x + placement.offset[0],
+						baseCenter.y + placement.offset[1],
+						baseCenter.z + placement.offset[2]
 					);
-					pumpkin.rotation.y = Math.random() * Math.PI * 2;
-					pumpkin.rotation.z = (Math.random() - 0.5) * 0.08;
+					pumpkin.rotation.y = placement.rotationY;
+					pumpkin.rotation.z = placement.rotationZ;
 
 					pumpkinGroup.add(pumpkin);
 				}
@@ -345,24 +348,25 @@
 				leavesMat.uniforms.uBoxMin.value.copy(bbox.min);
 				leavesMat.uniforms.uBoxSize.value.copy(bbox.getSize(new THREE.Vector3()));
 
-				tree.leavesCount = positionAttr.count;
+				tree.leavesCount = Math.ceil(positionAttr.count * 0.65);
 				tree.deadID = [];
 				tree.leaves = new THREE.InstancedMesh(leafMesh.geometry, leavesMat, tree.leavesCount);
 
-				for (let i = 0; i < tree.leavesCount; i++) {
+				for (let leafIndex = 0; leafIndex < tree.leavesCount; leafIndex++) {
+					const sourceIndex = Math.floor((leafIndex * positionAttr.count) / tree.leavesCount);
 					dummy.position.set(
-						positionAttr.array[i * 3],
-						positionAttr.array[i * 3 + 1],
-						positionAttr.array[i * 3 + 2]
+						positionAttr.array[sourceIndex * 3],
+						positionAttr.array[sourceIndex * 3 + 1],
+						positionAttr.array[sourceIndex * 3 + 2]
 					);
 					dummy.lookAt(
-						dummy.position.x + normalAttr.array[i * 3],
-						dummy.position.y + normalAttr.array[i * 3 + 1],
-						dummy.position.z + normalAttr.array[i * 3 + 2]
+						dummy.position.x + normalAttr.array[sourceIndex * 3],
+						dummy.position.y + normalAttr.array[sourceIndex * 3 + 1],
+						dummy.position.z + normalAttr.array[sourceIndex * 3 + 2]
 					);
 					dummy.scale.setScalar(Math.random() * 0.2 + 0.8);
 					dummy.updateMatrix();
-					tree.leaves.setMatrixAt(i, dummy.matrix);
+					tree.leaves.setMatrixAt(leafIndex, dummy.matrix);
 				}
 
 				for (let i = 0; i < 8; i++) {
