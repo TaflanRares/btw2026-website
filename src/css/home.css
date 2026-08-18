@@ -303,7 +303,9 @@ body {
 	position: relative;
 	z-index: 10;
 	display: grid;
+	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	gap: 2.5rem;
 	margin-inline: auto;
 	max-width: 90rem;
@@ -1245,16 +1247,29 @@ body {
 	.site-main {
 		padding-top: 0;
 	}
+
+	.hero-section {
+		min-height: 100svh;
+	}
+
+	.hero-home-grid {
+		min-height: 100svh;
+		align-content: center;
+	}
 }
 
 @media (min-width: 1024px) {
 	.hero-home-grid {
-		grid-template-columns: minmax(21rem, clamp(34%, 38vw, 44%)) minmax(28rem, 1fr);
+		grid-template-columns: minmax(24rem, clamp(40%, 43vw, 50%)) minmax(26rem, 1fr);
 		padding-right: 0;
 	}
 
 	.hero-home-copy {
-		max-width: 41rem;
+		max-width: 48rem;
+	}
+
+	.hero-event-title {
+		max-width: 13ch;
 	}
 
 	.hero-tree-spacer {
