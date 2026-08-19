@@ -128,9 +128,31 @@
 	transform: rotate(-6deg) scale(2);
 }
 
+.css-pumpkin--about1 {
+	left: clamp(5%, 20vw, 8%);
+	bottom: 15%;
+	transform: rotate(7deg) scale(1.75);
+}
+
+.css-pumpkin--about2 {
+	right: clamp(8%, 20vw, 11%);
+	bottom: 75%;
+	transform: rotate(-8deg) scale(1.5);
+}
+
 @media (orientation: portrait) {
 	.css-pumpkin--footer {
 		bottom: 110%;
 		transform: scale(2.2);
+	}
+
+	.css-pumpkin--about1 {
+		left: clamp(5%, 20vw, 8%);
+		bottom: 10%;
+		transform: rotate(-3deg) scale(1.75);
+	}
+
+	.css-pumpkin--about2 {
+		display: none;
 	}
 }
