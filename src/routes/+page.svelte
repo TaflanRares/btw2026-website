@@ -1,6 +1,6 @@
 <script lang="ts">
-	import '../css/home.css';
-	import '../css/pumpkin.css';
+	import '../css/main.css';
+
 	import { base, resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	import {
@@ -91,7 +91,7 @@
 		}))
 		.filter((session) => !Number.isNaN(session.date.getTime()))
 		.sort((first, second) => first.date.getTime() - second.date.getTime());
-	const displayedSponsors = [...sponsors, ...sponsors];
+	const displayedSponsors = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 	const registerNowUrl = 'https://docs.google.com/forms/';
 	let activeScheduleDay = $state(0);
 	let navOpen = $state(false);
@@ -464,12 +464,12 @@
 				<div class="about-grid">
 					<div class="about-story">
 						<p class="about-copy">
-							BEST Brașov is a non-profit organisation dedicated to developing students,
+							BEST Brașov is a student-run non-profit organisation dedicated to developing students,
 							through educational involvement, complementary education and career support.
 						</p>
 						<p class="about-copy">
-							BEST Training Week, now on its XIX-th edition brings together students and professionals
-							with the goal of covering areas of interest.
+							BEST Training Week, now on its XIX-th edition brings together students and
+							professionals with the goal of covering areas of interest.
 						</p>
 					</div>
 

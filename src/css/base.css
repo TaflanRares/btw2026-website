@@ -28,6 +28,7 @@
 html,
 body {
 	overscroll-behavior: none;
+	overflow-x: clip;
 	min-height: 100%;
 	margin: 0;
 }
@@ -36,4 +37,47 @@ body {
 	font-family: 'Segoe UI', sans-serif;
 	background: var(--page-bg);
 	color: var(--page-text);
+}
+
+.page-shell {
+	overflow-x: clip;
+	min-height: 100vh;
+	width: 100%;
+	background: var(--page-bg);
+	color: var(--page-text);
+}
+
+.page-glow {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	overflow: hidden;
+	contain: paint;
+}
+
+.page-glow-orb {
+	position: absolute;
+	right: -4rem;
+	bottom: 2.5rem;
+	height: 20rem;
+	width: 20rem;
+	border-radius: 50%;
+	background: rgba(210, 105, 30, 0.12);
+	filter: blur(140px);
+}
+
+.site-main {
+	padding-top: 0;
+}
+
+@media (max-width: 768px) {
+
+	html,
+	body,
+	.page-shell,
+	.site-header,
+	.site-main {
+		width: 100%;
+		max-width: 100vw;
+	}
 }

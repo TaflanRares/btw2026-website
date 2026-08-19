@@ -2,6 +2,8 @@
 
 Website for BEST Training Week 2026 Brasov
 
+Static page, used primarily sveltekit, threejs & npm.
+
 ---
 
 All rights reserved | Copyright © 2026 \
