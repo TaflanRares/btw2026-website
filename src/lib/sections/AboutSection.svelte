@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import Pumpkin from '../components/Pumpkin.svelte';
 </script>
 
@@ -12,7 +13,7 @@
 	<div class="about-layout">
 		<div class="about-hero">
 			<img
-				src="/images/BESTies/BESTGroupPhoto.webp"
+				src={`${base}/images/BESTies/BESTGroupPhoto.webp`}
 				alt="BEST Brașov members"
 				class="about-hero-image"
 			/>

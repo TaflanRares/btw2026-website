@@ -182,7 +182,11 @@
 	}
 
 	.collage-copy h3 {
-		font-size: 1rem;
+		font-size: 1.2rem;
+	}
+
+	.collage-copy p {
+		font-size: 0.82rem;
 	}
 
 	.collage-card:nth-child(7) {

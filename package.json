@@ -42,6 +42,7 @@
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^6.3.4",
 		"three": "^0.185.1",
 		"three-stdlib": "^2.36.1"
 	}
