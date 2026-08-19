@@ -1,191 +1,193 @@
 .organizers-section {
-    position: relative;
-    padding-top: 1rem;
-    overflow: hidden;
+	position: relative;
+	padding-top: 1rem;
+	overflow: hidden;
 }
 
 .organizers-content {
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .organizer-collage {
-    display: grid;
-    grid-template-columns: repeat(16, minmax(0, 1fr));
-    grid-template-rows: repeat(2, auto);
-    gap: 0.8rem;
-    max-width: 72rem;
-    margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(16, minmax(0, 1fr));
+	grid-template-rows: repeat(2, auto);
+	gap: 0.8rem;
+	max-width: 72rem;
+	margin: 0 auto;
 }
 
 .team-leaf-overlay {
-    position: absolute;
-    right: -22rem;
-    bottom: -28rem;
-    width: 82rem;
-    height: 82rem;
-    opacity: 0.45;
-    z-index: 0;
-    pointer-events: none;
+	position: absolute;
+	right: -22rem;
+	bottom: -28rem;
+	width: 82rem;
+	height: 82rem;
+	opacity: 0.45;
+	z-index: 0;
+	pointer-events: none;
 }
 
 .team-leaf-overlay :global(.leaf-scene) {
-    inset: 0;
+	inset: 0;
 }
 
 .team-leaf-overlay :global(.leaf) {
-    filter: saturate(0.9);
+	filter: saturate(0.9);
 }
 
 .collage-card {
-    --base-x: 0px;
-    --base-y: 0px;
-    --stamp-rotation: 0deg;
-    position: relative;
-    grid-column: span 4;
-    grid-row: auto;
-    overflow: visible;
-    background: transparent;
-    transform: translate(var(--base-x), var(--base-y)) rotate(var(--stamp-rotation)) scale(0.98);
-    z-index: 1;
-    transition: transform 220ms ease;
+	--base-x: 0px;
+	--base-y: 0px;
+	--stamp-rotation: 0deg;
+	position: relative;
+	grid-column: span 4;
+	grid-row: auto;
+	overflow: visible;
+	background: transparent;
+	transform: translate(var(--base-x), var(--base-y)) rotate(var(--stamp-rotation)) scale(0.98);
+	z-index: 1;
+	transition: transform 220ms ease;
 }
 
 .collage-card:hover {
-    transform: translate(var(--base-x), calc(var(--base-y) - 4px)) rotate(calc(var(--stamp-rotation) + 1.5deg)) scale(1.02);
+	transform: translate(var(--base-x), calc(var(--base-y) - 4px))
+		rotate(calc(var(--stamp-rotation) + 1.5deg)) scale(1.02);
 }
 
 .collage-card:nth-child(1) {
-    grid-row: 1;
-    grid-column: 1 / span 4;
-    --base-y: 4px;
-    --stamp-rotation: -1.2deg;
-    z-index: 2;
+	grid-row: 1;
+	grid-column: 1 / span 4;
+	--base-y: 4px;
+	--stamp-rotation: -1.2deg;
+	z-index: 2;
 }
 
 .collage-card:nth-child(2) {
-    grid-row: 1;
-    grid-column: 5 / span 4;
-    --base-y: 0px;
-    z-index: 3;
+	grid-row: 1;
+	grid-column: 5 / span 4;
+	--base-y: 0px;
+	z-index: 3;
 }
 
 .collage-card:nth-child(3) {
-    grid-row: 1;
-    grid-column: 9 / span 4;
-    --base-y: -3px;
-    --stamp-rotation: 1.1deg;
-    z-index: 4;
+	grid-row: 1;
+	grid-column: 9 / span 4;
+	--base-y: -3px;
+	--stamp-rotation: 1.1deg;
+	z-index: 4;
 }
 
 .collage-card:nth-child(4) {
-    grid-row: 1;
-    grid-column: 13 / span 4;
-    --base-y: 2px;
-    --stamp-rotation: 0.8deg;
-    z-index: 2;
+	grid-row: 1;
+	grid-column: 13 / span 4;
+	--base-y: 2px;
+	--stamp-rotation: 0.8deg;
+	z-index: 2;
 }
 
 .collage-card:nth-child(5) {
-    grid-row: 2;
-    grid-column: 3 / span 4;
-    --base-y: -4px;
-    --stamp-rotation: -1deg;
-    z-index: 5;
+	grid-row: 2;
+	grid-column: 3 / span 4;
+	--base-y: -4px;
+	--stamp-rotation: -1deg;
+	z-index: 5;
 }
 
 .collage-card:nth-child(6) {
-    grid-row: 2;
-    grid-column: 7 / span 4;
-    --base-y: 1px;
-    z-index: 3;
+	grid-row: 2;
+	grid-column: 7 / span 4;
+	--base-y: 1px;
+	z-index: 3;
 }
 
 .collage-card:nth-child(7) {
-    grid-row: 2;
-    grid-column: 11 / span 4;
-    --base-y: -3px;
-    --stamp-rotation: 1.3deg;
-    z-index: 4;
+	grid-row: 2;
+	grid-column: 11 / span 4;
+	--base-y: -3px;
+	--stamp-rotation: 1.3deg;
+	z-index: 4;
 }
 
 .collage-photo {
-    display: block;
-    width: 100%;
-    height: 70%;
-    object-fit: cover;
-    -webkit-mask-image: radial-gradient(0.7rem 0.34rem at 0.35rem 100%, #0000 98%, #000) repeat-x;
-    -webkit-mask-size: 1.4rem 100%;
-    mask-image: radial-gradient(0.7rem 0.34rem at 0.35rem 100%, #0000 98%, #000) repeat-x;
-    mask-size: 1.4rem 100%;
+	display: block;
+	width: 100%;
+	height: 70%;
+	object-fit: cover;
+	-webkit-mask-image: radial-gradient(0.7rem 0.34rem at 0.35rem 100%, #0000 98%, #000) repeat-x;
+	-webkit-mask-size: 1.4rem 100%;
+	mask-image: radial-gradient(0.7rem 0.34rem at 0.35rem 100%, #0000 98%, #000) repeat-x;
+	mask-size: 1.4rem 100%;
 }
 
 .collage-stamp {
-    --stamp-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    aspect-ratio: 4 / 5;
-    padding: var(--stamp-radius);
-    background: rgba(245, 222, 179, 0.7);
-    mask:
-        radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--stamp-radius) var(--stamp-radius) / calc(2 * var(--stamp-radius)) calc(2 * var(--stamp-radius)),
-        conic-gradient(#000 0 0) content-box;
+	--stamp-radius: 14px;
+	display: flex;
+	flex-direction: column;
+	aspect-ratio: 4 / 5;
+	padding: var(--stamp-radius);
+	background: rgba(245, 222, 179, 0.7);
+	mask:
+		radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--stamp-radius) var(--stamp-radius) /
+			calc(2 * var(--stamp-radius)) calc(2 * var(--stamp-radius)),
+		conic-gradient(#000 0 0) content-box;
 }
 
 .collage-copy {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0.45rem 0.25rem 0;
-    text-align: center;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0.45rem 0.25rem 0;
+	text-align: center;
 }
 
 .collage-copy h3 {
-    font-size: clamp(1.08rem, 1.7vw, 1.35rem);
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--page-text-dark);
+	font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+	font-weight: 800;
+	line-height: 1.15;
+	color: var(--page-text-dark);
 }
 
 .collage-copy p {
-    margin-top: 0.25rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--page-text-medium);
+	margin-top: 0.25rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--page-text-medium);
 }
 
 @media (orientation: portrait) and (max-width: 960px) {
-    .team-leaf-overlay {
-        right: -26rem;
-        bottom: -34rem;
-        opacity: 0.35;
-    }
+	.team-leaf-overlay {
+		right: -26rem;
+		bottom: -34rem;
+		opacity: 0.35;
+	}
 
-    .organizer-collage {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: none;
-        gap: 0.75rem;
-    }
+	.organizer-collage {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: none;
+		gap: 0.75rem;
+	}
 
-    .collage-card,
-    .collage-card:nth-child(n) {
-        --base-y: 0px;
-        --base-x: 0px;
-        --stamp-rotation: 0deg;
-        grid-column: span 1;
-        grid-row: auto;
-    }
+	.collage-card,
+	.collage-card:nth-child(n) {
+		--base-y: 0px;
+		--base-x: 0px;
+		--stamp-rotation: 0deg;
+		grid-column: span 1;
+		grid-row: auto;
+	}
 
-    .collage-copy h3 {
-        font-size: 1rem;
-    }
+	.collage-copy h3 {
+		font-size: 1rem;
+	}
 
-    .collage-card:nth-child(7) {
-        grid-column: 1 / -1;
-        justify-self: center;
-        width: calc((100% - 0.75rem) / 2);
-    }
+	.collage-card:nth-child(7) {
+		grid-column: 1 / -1;
+		justify-self: center;
+		width: calc((100% - 0.75rem) / 2);
+	}
 }
