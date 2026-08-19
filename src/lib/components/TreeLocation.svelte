@@ -15,7 +15,8 @@
 		}
 
 		const isTouchViewport =
-			window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(max-width: 960px)').matches;
+			window.matchMedia('(pointer: coarse)').matches ||
+			window.matchMedia('(max-width: 960px)').matches;
 
 		const leavesVS = /* glsl */ `
 			uniform sampler2D uNoiseMap;
@@ -211,7 +212,8 @@
 				shader.uniforms.uPumpkinShadeB = { value: new THREE.Color(0xe27a2a) };
 				shader.uniforms.uPumpkinShadeC = { value: new THREE.Color(0xffba58) };
 
-				shader.fragmentShader = `
+				shader.fragmentShader =
+					`
 					uniform vec3 uPumpkinShadeA;
 					uniform vec3 uPumpkinShadeB;
 					uniform vec3 uPumpkinShadeC;

@@ -93,7 +93,8 @@ export function createLeafScene(root: HTMLElement) {
 	let range = 1;
 	let frameRequested = false;
 
-	const documentHeight = () => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, 1);
+	const documentHeight = () =>
+		Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, 1);
 
 	function recalcLayout() {
 		startOffset = root.offsetTop;

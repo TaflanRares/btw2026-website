@@ -1,0 +1,136 @@
+.css-pumpkin {
+	position: absolute;
+	z-index: 3;
+	width: clamp(4.5rem, 8vw, 7rem);
+	height: clamp(4.5rem, 8vw, 7rem);
+	pointer-events: none;
+	opacity: 1;
+}
+
+.pumpkin-body {
+	position: absolute;
+    top: 15%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	filter: drop-shadow(0 0.7rem 1rem var(--page-shadow));
+}
+
+.pumpkin-lobe {
+	position: absolute;
+	bottom: 0;
+	width: 58%;
+	height: 82%;
+	border-radius: 48% 48% 42% 42%;
+	background: var(--page-accent-deep);
+}
+
+.pumpkin-lobe--left {
+	left: 4%;
+	transform: rotate(-14deg);
+	background: var(--page-accent-dark);
+}
+
+.pumpkin-lobe--center {
+	left: 21%;
+	z-index: 2;
+	background: var(--page-surface-strong);
+}
+
+.pumpkin-lobe--right {
+	right: 4%;
+	transform: rotate(14deg);
+	background: var(--page-accent-dark);
+}
+
+.pumpkin-stem {
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    z-index: 1;
+    width: 12%;
+    height: 20%;
+    border-radius: 30% 30% 10% 10%;
+    background: var(--page-brown);
+    transform: translateX(-50%) rotate(8deg);
+}
+
+.pumpkin-smile {
+    position: absolute;
+    bottom: 10%;
+    left: 55%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start;
+    width: 55%;
+    height: 25%;
+    gap: -1%;
+    z-index: 10;
+}
+
+.tooth {
+    width: 16%;
+    height: 50%;
+    background: rgb(126, 61, 15);
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+.tooth:nth-child(1) {
+    transform: translateY(79%) rotate(20deg);
+}
+
+.tooth:nth-child(2) {
+    transform: translateY(95%) rotate(8deg);
+}
+
+.tooth:nth-child(3) {
+    transform: translateY(100%);
+}
+
+.tooth:nth-child(4) {
+    transform: translateY(95%) rotate(-8deg);
+}
+
+.tooth:nth-child(5) {
+    transform: translateY(79%) rotate(-20deg);
+}
+
+.pumpkin-eyes {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 38%;
+    height: 22%;
+    z-index: 10;
+}
+
+.eye {
+    width: 28%;
+    height: 75%;
+    background: rgb(126, 61, 15);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.eye--left {
+    transform: rotate(-8deg);
+}
+
+.eye--right {
+    transform: rotate(8deg);
+}
+
+.css-pumpkin--footer {
+	right: clamp(1rem, 6vw, 6rem);
+	bottom: 139%;
+	transform: rotate(-6deg) scale(2);
+}
+
+@media (orientation: portrait) {
+    .css-pumpkin--footer {
+        bottom: 110%;
+        transform: scale(2.2);
+    }
+}

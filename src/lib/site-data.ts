@@ -42,8 +42,7 @@ export const scheduleDays = [
 				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu B',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -54,8 +53,7 @@ export const scheduleDays = [
 				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu C',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -84,8 +82,7 @@ export const scheduleDays = [
 				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu E',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer diferit',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -96,8 +93,7 @@ export const scheduleDays = [
 				date: '2026-11-18 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu F',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer diferit',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -126,8 +122,7 @@ export const scheduleDays = [
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu H',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -138,8 +133,7 @@ export const scheduleDays = [
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu I',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -168,8 +162,7 @@ export const scheduleDays = [
 				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu K',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -180,8 +173,7 @@ export const scheduleDays = [
 				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu ETC',
-				description:
-					'Descriere',
+				description: 'Descriere',
 				location: 'Locatie',
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -189,7 +181,7 @@ export const scheduleDays = [
 					'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
 			}
 		]
-	},
+	}
 ];
 
 export const sponsors = [

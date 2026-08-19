@@ -8,8 +8,7 @@ const config = {
 	preprocess: vitePreprocess(),
 	compilerOptions: {
 		// Force runes mode for the project, except for libraries.
-		runes: ({ filename }) =>
-			filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
 	kit: {
 		adapter: adapter({

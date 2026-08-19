@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../css/home.css';
+	import '../css/pumpkin.css';
 	import { base, resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	import {
@@ -10,6 +11,8 @@
 		socialLinks,
 		sponsors
 	} from '$lib/site-data';
+
+	import Pumpkin from '../lib/components/Pumpkin.svelte';
 
 	type CountdownState = {
 		days: number;
@@ -118,9 +121,10 @@
 
 	function updateCountdown() {
 		const now = Date.now();
-		const nextSession = now >= eventStartDate.getTime()
-			? sessionTargets.find((session) => session.date.getTime() > now)
-			: undefined;
+		const nextSession =
+			now >= eventStartDate.getTime()
+				? sessionTargets.find((session) => session.date.getTime() > now)
+				: undefined;
 		const targetDate = nextSession?.date ?? eventStartDate;
 		const difference = Math.max(targetDate.getTime() - now, 0);
 
@@ -162,7 +166,7 @@
 		const saveData =
 			typeof navigator !== 'undefined' && 'connection' in navigator
 				? (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
-					?.saveData === true
+						?.saveData === true
 				: false;
 
 		if (prefersReducedMotion || saveData) {
@@ -175,8 +179,11 @@
 		};
 
 		if ('requestIdleCallback' in window) {
-			(window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number })
-				.requestIdleCallback(() => void load(), { timeout: 1500 });
+			(
+				window as Window & {
+					requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+				}
+			).requestIdleCallback(() => void load(), { timeout: 1500 });
 			return;
 		}
 
@@ -195,7 +202,11 @@
 
 	onMount(() => {
 		if (!window.location.hash) {
-			window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#home`);
+			window.history.replaceState(
+				null,
+				'',
+				`${window.location.pathname}${window.location.search}#home`
+			);
 		}
 
 		updateCountdown();
@@ -206,7 +217,7 @@
 		const saveData =
 			typeof navigator !== 'undefined' && 'connection' in navigator
 				? (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
-					?.saveData === true
+						?.saveData === true
 				: false;
 
 		const activateTree = () => {
@@ -297,11 +308,7 @@
 
 			<div class="nav-options">
 				{#each navItems as item (item.href)}
-					<a
-						href={resolve(item.href)}
-						class="nav-link"
-						onclick={() => (navOpen = false)}
-					>
+					<a href={resolve(item.href)} class="nav-link" onclick={() => (navOpen = false)}>
 						<span>{item.label}</span>
 						<svg viewBox="0 0 24 24" aria-hidden="true" class="nav-arrow-icon">
 							<path
@@ -329,7 +336,11 @@
 
 			<div id="mobile-nav-options" class="mobile-nav" class:mobile-nav--open={navOpen}>
 				{#each navItems as item (item.href)}
-					<a href={resolve(item.href)} class="nav-link mobile-nav-link" onclick={() => (navOpen = false)}>
+					<a
+						href={resolve(item.href)}
+						class="nav-link mobile-nav-link"
+						onclick={() => (navOpen = false)}
+					>
 						<span>{item.label}</span>
 						<svg viewBox="0 0 24 24" aria-hidden="true" class="nav-arrow-icon">
 							<path
@@ -453,12 +464,12 @@
 				<div class="about-grid">
 					<div class="about-story">
 						<p class="about-copy">
-							BEST Brașov is a student non-profit organisation dedicated to developing students,
+							BEST Brașov is a non-profit organisation dedicated to developing students,
 							through educational involvement, complementary education and career support.
 						</p>
 						<p class="about-copy">
-							BEST Training Week, on it's XIX-th edition brings together students and
-							professionals with the goal of covering areas of interest.
+							BEST Training Week, now on its XIX-th edition brings together students and professionals
+							with the goal of covering areas of interest.
 						</p>
 					</div>
 
@@ -497,10 +508,12 @@
 					<article class="schedule-day-card">
 						<header class="schedule-day-header">
 							<div>
-								<p class="schedule-day-label">{scheduleDays[activeScheduleDay].label}</p>
 								<h3 class="schedule-day-title">{scheduleDays[activeScheduleDay].title}</h3>
+								<p class="schedule-day-label">{scheduleDays[activeScheduleDay].label}</p>
 							</div>
-							<span class="schedule-badge">{scheduleDays[activeScheduleDay].sessions.length} sessions</span>
+							<span class="schedule-badge"
+								>{scheduleDays[activeScheduleDay].sessions.length} sessions</span
+							>
 						</header>
 
 						<p class="schedule-summary">{scheduleDays[activeScheduleDay].summary}</p>
@@ -508,24 +521,30 @@
 						<div class="session-list">
 							{#each scheduleDays[activeScheduleDay].sessions as session (session.time + session.title)}
 								<div class="session-item">
-									<div class="session-dot"></div>
 									<div class="session-content">
-										<h4 class="session-title">{session.title}</h4>
-										<div class="trainer-row">
-											<img src={session.trainerPhoto} alt={session.trainer} class="trainer-badge" />
-											{#if session.trainerSocial.url}
-												<a
-													href={session.trainerSocial.url}
-													target="_blank"
-													rel="noopener noreferrer"
-													class="trainer-name"
-													aria-label={`${session.trainer}: ${session.trainerSocial.label}`}
-												>
-													{session.trainer}
-												</a>
-											{:else}
-												<span class="trainer-name">{session.trainer}</span>
-											{/if}
+										<div class="session-heading-row">
+											<h4 class="session-title">{session.title}</h4>
+											<div class="trainer-row">
+												<img
+													src={session.trainerPhoto}
+													alt={session.trainer}
+													class="trainer-badge"
+												/>
+												{#if session.trainerSocial.url}
+													<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+													<a
+														href={session.trainerSocial.url}
+														target="_blank"
+														rel="noopener noreferrer"
+														class="trainer-name"
+														aria-label={`${session.trainer}: ${session.trainerSocial.label}`}
+													>
+														{session.trainer}
+													</a>
+												{:else}
+													<span class="trainer-name">{session.trainer}</span>
+												{/if}
+											</div>
 										</div>
 										<p class="session-description">{session.description}</p>
 									</div>
@@ -537,12 +556,7 @@
 							{/each}
 						</div>
 					</article>
-					<button
-						type="button"
-						class="schedule-edge schedule-edge--next"
-						onclick={showNextDay}
-						aria-label="Show next schedule day"
-					>
+					<button type="button" class="schedule-edge schedule-edge--next" onclick={showNextDay}>
 						<span aria-hidden="true">›</span>
 					</button>
 				</div>
@@ -596,6 +610,8 @@
 	</main>
 
 	<footer class="site-footer">
+		<Pumpkin class="css-pumpkin--footer" />
+
 		<div class="footer-grid">
 			<div>
 				<p class="section-kicker section-kicker--small">Follow us</p>
@@ -658,7 +674,7 @@
 			<div class="footer-brand-wrap">
 				<a href="https://bestbrasov.ro/" target="_blank" rel="noopener noreferrer">
 					<img
-							src={`${base}/images/logos/BESTBrasovLogoBlack.png`}
+						src={`${base}/images/logos/BESTBrasovLogoBlack.png`}
 						alt="BEST Brașov logo"
 						class="footer-brand"
 					/>

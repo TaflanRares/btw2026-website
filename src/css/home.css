@@ -86,7 +86,9 @@ body {
 	border: 1px solid rgba(205, 133, 63, 0.35);
 	background: rgba(250, 235, 215, 0.5);
 	color: #5e3a26;
-	transition: background 180ms ease, color 180ms ease;
+	transition:
+		background 180ms ease,
+		color 180ms ease;
 }
 
 .nav-menu-icon,
@@ -132,7 +134,6 @@ body {
 .nav-options::-webkit-scrollbar {
 	display: none;
 }
-
 
 .nav-link {
 	display: inline-flex;
@@ -200,7 +201,9 @@ body {
 	background: rgba(250, 235, 215, 0.92);
 	backdrop-filter: blur(8px);
 	box-shadow: 0 10px 20px rgba(122, 61, 19, 0.12);
-	transition: max-height 240ms ease, opacity 180ms ease;
+	transition:
+		max-height 240ms ease,
+		opacity 180ms ease;
 }
 
 .mobile-nav--open {
@@ -602,7 +605,9 @@ body {
 	box-shadow: 0 0 0 0.55rem rgba(250, 235, 215, 0.18);
 	color: #5b351f;
 	transform: translateX(-50%);
-	transition: background 160ms ease, color 160ms ease;
+	transition:
+		background 160ms ease,
+		color 160ms ease;
 	animation: hero-scroll-pulse 2s ease-in-out infinite;
 }
 
@@ -817,12 +822,27 @@ body {
 			var(--schedule-tile),
 		conic-gradient(from -35deg at 100% 50%, var(--schedule-color-3) 0 35deg, #fff0 0 100%)
 			var(--schedule-tile),
-		conic-gradient(from 270deg at 50% 50%, var(--schedule-color-3) 0 55deg, var(--schedule-color-1) 0 180deg, #fff0 0 100%)
+		conic-gradient(
+				from 270deg at 50% 50%,
+				var(--schedule-color-3) 0 55deg,
+				var(--schedule-color-1) 0 180deg,
+				#fff0 0 100%
+			)
 			var(--schedule-tile);
 	background: var(--schedule-pattern), var(--schedule-pattern);
 	background-position:
-		var(--schedule-offset), var(--schedule-offset), var(--schedule-offset), var(--schedule-offset),
-		var(--schedule-offset), var(--schedule-offset), 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+		var(--schedule-offset),
+		var(--schedule-offset),
+		var(--schedule-offset),
+		var(--schedule-offset),
+		var(--schedule-offset),
+		var(--schedule-offset),
+		0 0,
+		0 0,
+		0 0,
+		0 0,
+		0 0,
+		0 0;
 	background-color: var(--schedule-color-1);
 	background-repeat: repeat;
 	box-shadow:
@@ -882,7 +902,10 @@ body {
 	line-height: 0.7;
 	opacity: 0.52;
 	transform: scaleX(1.35);
-	transition: color 160ms ease, opacity 160ms ease, transform 180ms ease;
+	transition:
+		color 160ms ease,
+		opacity 160ms ease,
+		transform 180ms ease;
 }
 
 .schedule-edge:hover span,
@@ -930,19 +953,19 @@ body {
 	border-bottom: 1px solid rgba(205, 133, 63, 0.35);
 }
 
+.schedule-day-title {
+	font-size: clamp(2rem, 4vw, 3.2rem);
+	font-weight: 900;
+	color: var(--page-text-dark);
+}
+
 .schedule-day-label {
+	margin-top: 0.3rem;
 	font-size: 0.68rem;
 	font-weight: 700;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
 	color: var(--page-accent);
-}
-
-.schedule-day-title {
-	margin-top: 0.3rem;
-	font-size: clamp(2rem, 4vw, 3.2rem);
-	font-weight: 900;
-	color: var(--page-text-dark);
 }
 
 .schedule-badge {
@@ -968,32 +991,20 @@ body {
 
 .session-list {
 	display: grid;
+	gap: 1.5rem;
 	margin-top: 1.25rem;
-	border-bottom: 1px solid rgba(205, 133, 63, 0.25);
 }
 
 .session-item {
 	position: relative;
 	display: flex;
 	align-items: start;
-	gap: 0.85rem;
-	border-top: 1px solid rgba(205, 133, 63, 0.25);
-	padding: 1.1rem 0;
-}
-
-.session-dot {
-	margin-top: 0.35rem;
-	flex: 0 0 auto;
-	height: 0.75rem;
-	width: 0.75rem;
-	border-radius: 50%;
-	background: var(--page-surface-strong);
-	box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.1);
+	gap: 1.1rem;
 }
 
 .session-content {
 	flex: 1;
-	padding-left: 0.25rem;
+	min-width: 0;
 }
 
 .session-meta {
@@ -1025,6 +1036,14 @@ body {
 	color: var(--page-text-medium);
 }
 
+.session-heading-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
 .session-title {
 	margin-top: 0;
 	font-size: 1.75rem;
@@ -1043,10 +1062,21 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 0.9rem;
-	margin-top: 0.8rem;
+	flex: 0 0 auto;
 	font-size: 1.35rem;
 	font-weight: 700;
 	color: #7a3d13;
+}
+
+@media (max-width: 640px) {
+	.session-heading-row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.trainer-row {
+		margin-top: 0.4rem;
+	}
 }
 
 .trainer-badge {
@@ -1102,7 +1132,11 @@ a.trainer-name:focus-visible {
 	padding: 0;
 	background: transparent;
 	box-shadow: none;
-	transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease, background 180ms ease;
+	transition:
+		transform 180ms ease,
+		box-shadow 180ms ease,
+		filter 180ms ease,
+		background 180ms ease;
 }
 
 .sponsor-card:hover {
@@ -1123,6 +1157,8 @@ a.trainer-name:focus-visible {
 .site-footer {
 	border-top: 1px solid rgba(205, 133, 63, 0.4);
 	background: rgba(245, 222, 179, 0.7);
+	position: relative;
+	overflow: visible;
 }
 
 .footer-grid {
@@ -1448,9 +1484,8 @@ a.trainer-name:focus-visible {
 }
 
 .collage-card:hover {
-	transform:
-		translate(var(--base-x), calc(var(--base-y) - 4px)) rotate(calc(var(--stamp-rotation) + 1.5deg))
-		scale(1.02);
+	transform: translate(var(--base-x), calc(var(--base-y) - 4px))
+		rotate(calc(var(--stamp-rotation) + 1.5deg)) scale(1.02);
 }
 
 .collage-card:nth-child(1) {
@@ -1526,8 +1561,8 @@ a.trainer-name:focus-visible {
 	padding: var(--stamp-radius);
 	background: rgba(245, 222, 179, 0.7);
 	mask:
-		radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--stamp-radius)
-			var(--stamp-radius) / calc(2 * var(--stamp-radius)) calc(2 * var(--stamp-radius)),
+		radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--stamp-radius) var(--stamp-radius) /
+			calc(2 * var(--stamp-radius)) calc(2 * var(--stamp-radius)),
 		conic-gradient(#000 0 0) content-box;
 }
 
