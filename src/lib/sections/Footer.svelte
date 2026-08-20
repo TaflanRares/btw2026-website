@@ -13,6 +13,7 @@
 		<div>
 			<span class="follow-us">Follow us</span>
 			<div class="social-links">
+				<!-- eslint-disable svelte/no-navigation-without-resolve -->
 				{#each socialLinks as social (social.label)}
 					<a
 						href={social.url}
@@ -88,6 +89,7 @@
 						{/if}
 					</a>
 				{/each}
+				<!-- eslint-enable svelte/no-navigation-without-resolve -->
 			</div>
 		</div>
 

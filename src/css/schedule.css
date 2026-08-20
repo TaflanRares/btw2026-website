@@ -21,15 +21,23 @@
 	--schedule-tile: 50% / calc(var(--schedule-size) * 7) calc(var(--schedule-size) * 24.6);
 	--schedule-offset: calc(var(--schedule-size) * -3.5) calc(var(--schedule-size) * -12.3);
 	--schedule-pattern:
-		conic-gradient(from 35deg at 88.75% 25%, var(--schedule-color-1) 0 110deg, #fff0 0 100%) var(--schedule-tile),
-		conic-gradient(from 0deg at 0% 20.5%, var(--schedule-color-2) 0 35deg, #fff0 0 100%) var(--schedule-tile),
-		conic-gradient(from -35deg at 39% 25%, var(--schedule-color-3) 0 70deg, #fff0 0 100%) var(--schedule-tile),
-		conic-gradient(from -35deg at 63.5% 35.25%, var(--schedule-color-2) 0 70deg, #fff0 0 100%) var(--schedule-tile),
-		conic-gradient(from -35deg at 100% 50%, var(--schedule-color-3) 0 35deg, #fff0 0 100%) var(--schedule-tile),
-		conic-gradient(from 270deg at 50% 50%,
-			var(--schedule-color-3) 0 55deg,
-			var(--schedule-color-1) 0 180deg,
-			#fff0 0 100%) var(--schedule-tile);
+		conic-gradient(from 35deg at 88.75% 25%, var(--schedule-color-1) 0 110deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from 0deg at 0% 20.5%, var(--schedule-color-2) 0 35deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from -35deg at 39% 25%, var(--schedule-color-3) 0 70deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from -35deg at 63.5% 35.25%, var(--schedule-color-2) 0 70deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(from -35deg at 100% 50%, var(--schedule-color-3) 0 35deg, #fff0 0 100%)
+			var(--schedule-tile),
+		conic-gradient(
+				from 270deg at 50% 50%,
+				var(--schedule-color-3) 0 55deg,
+				var(--schedule-color-1) 0 180deg,
+				#fff0 0 100%
+			)
+			var(--schedule-tile);
 	background: var(--schedule-pattern), var(--schedule-pattern);
 	background-position:
 		var(--schedule-offset),

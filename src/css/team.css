@@ -49,7 +49,11 @@
 	grid-row: auto;
 	overflow: visible;
 	background: transparent;
-	transform: translate(calc(var(--base-x) + var(--flutter-x)), calc(var(--base-y) + var(--flutter-y))) rotate(calc(var(--stamp-rotation) + var(--flutter-rot))) scale(0.98);
+	transform: translate(
+			calc(var(--base-x) + var(--flutter-x)),
+			calc(var(--base-y) + var(--flutter-y))
+		)
+		rotate(calc(var(--stamp-rotation) + var(--flutter-rot))) scale(0.98);
 	z-index: 1;
 	transition: transform 420ms ease;
 	will-change: transform;
@@ -61,7 +65,8 @@
 }
 
 .collage-card:hover {
-	transform: translate(var(--base-x), calc(var(--base-y) - 4px)) rotate(calc(var(--stamp-rotation) + 1.5deg)) scale(1.02);
+	transform: translate(var(--base-x), calc(var(--base-y) - 4px))
+		rotate(calc(var(--stamp-rotation) + 1.5deg)) scale(1.02);
 }
 
 .collage-card:nth-child(1) {

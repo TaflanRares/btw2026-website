@@ -24,19 +24,23 @@
 	overflow: hidden;
 	box-shadow: 0 14px 28px rgb(250, 235, 215);
 
-	mask-image: linear-gradient(to right,
-			transparent 0%,
-			rgb(250, 235, 215) 6%,
-			rgb(250, 235, 215) 94%,
-			transparent 100%);
+	mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		rgb(250, 235, 215) 6%,
+		rgb(250, 235, 215) 94%,
+		transparent 100%
+	);
 	mask-size: 100% 100%;
 	mask-repeat: no-repeat;
 
-	-webkit-mask-image: linear-gradient(to right,
-			transparent 0%,
-			rgb(250, 235, 215) 6%,
-			rgb(250, 235, 215) 94%,
-			transparent 100%);
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		rgb(250, 235, 215) 6%,
+		rgb(250, 235, 215) 94%,
+		transparent 100%
+	);
 	-webkit-mask-size: 100% 100%;
 	-webkit-mask-repeat: no-repeat;
 }
@@ -82,7 +86,13 @@
 	animation: slideRight 25s linear infinite;
 }
 
-.scroll-track:hover {
+@media (hover: hover) {
+	.scroll-track:hover {
+		animation-play-state: paused;
+	}
+}
+
+.scroll-track:active {
 	animation-play-state: paused;
 }
 
@@ -104,7 +114,15 @@
 		border-color 180ms ease;
 }
 
-.sponsor-card:hover {
+@media (hover: hover) {
+	.sponsor-card:hover {
+		background: rgb(250, 235, 215);
+		border-color: rgb(250, 235, 215);
+		transform: scale(1.06);
+	}
+}
+
+.sponsor-card:active {
 	background: rgb(250, 235, 215);
 	border-color: rgb(250, 235, 215);
 	transform: scale(1.06);
