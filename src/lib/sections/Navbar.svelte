@@ -104,15 +104,6 @@
 					</svg>
 				</a>
 			{/each}
-			<a
-				href={registerNowUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="nav-cta mobile-nav-cta"
-				onclick={() => (navOpen = false)}
-			>
-				Register now
-			</a>
 		</div>
 	</nav>
 </header>

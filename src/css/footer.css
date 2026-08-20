@@ -28,7 +28,6 @@
 	justify-content: flex-start;
 }
 
-/* Shared typography for Follow Us and Copyright Disclaimer */
 .follow-us,
 .footer-copy {
 	font-family: inherit;

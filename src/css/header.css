@@ -216,7 +216,7 @@
 @media (orientation: portrait) and (max-width: 960px) {
 	.site-nav {
 		display: grid;
-		grid-template-columns: auto auto;
+		grid-template-columns: auto 1fr auto;
 		gap: 0.55rem;
 		width: min(14.5rem, 76vw);
 		max-width: min(14.5rem, 76vw);
@@ -225,15 +225,29 @@
 		border-radius: 0.85rem;
 	}
 
+	.site-brand-link {
+		order: 1;
+	}
+
+	.nav-cta {
+		order: 2;
+		display: inline-flex;
+		justify-self: end;
+		height: 1.9rem;
+		padding: 0 0.6rem;
+		font-size: 0.6rem;
+		white-space: nowrap;
+	}
+
 	.nav-toggle {
+		order: 3;
 		display: inline-flex;
 		justify-self: end;
 		height: 2rem;
 		width: 2rem;
 	}
 
-	.nav-options,
-	.nav-cta {
+	.nav-options {
 		display: none;
 	}
 

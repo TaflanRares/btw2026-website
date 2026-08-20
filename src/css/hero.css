@@ -75,7 +75,7 @@
 	max-width: 30rem;
 	font-size: clamp(0.95rem, 1.6vw, 1.18rem);
 	line-height: 1.7;
-	font-weight: 600;
+	font-weight: 700;
 	color: #5d3824;
 	text-align: justify;
 	text-wrap: pretty;
@@ -151,6 +151,33 @@
 	color: #f7e7c8;
 }
 
+.hero-register-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	padding: 0.75rem 1.8rem;
+	background: #5b351f;
+	color: #f7e7c8;
+	font-family: 'Oswald', sans-serif;
+	font-size: clamp(0.85rem, 1.6vw, 1rem);
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	text-decoration: none;
+	border-radius: 999px;
+	transition:
+		background 160ms ease,
+		color 160ms ease,
+		transform 160ms ease;
+}
+
+.hero-register-cta:hover,
+.hero-register-cta:focus-visible {
+	background: #43240f;
+	transform: translateY(-2px);
+}
+
 @keyframes hero-scroll-pulse {
 	50% {
 		box-shadow: 0 0 0 0.9rem rgba(250, 235, 215, 0);
@@ -170,7 +197,45 @@
 
 	.hero-home-grid {
 		min-height: 100svh;
-		align-content: center;
+		align-content: start;
+		padding-top: 30%;
+		padding-bottom: 2rem;
+	}
+
+	.hero-home-copy {
+		gap: 1.4rem;
+	}
+
+	.hero-title-stack {
+		gap: 1.4rem;
+	}
+
+	.hero-event-title {
+		font-size: clamp(3.6rem, 12vw, 5.2rem);
+		line-height: 1.05;
+		max-width: 9ch;
+	}
+
+	.hero-countdown-stack {
+		gap: 1.1rem;
+		margin-top: 5%;
+	}
+
+	.hero-register-cta {
+		margin-top: 0.75rem;
+		margin-bottom: 0.5rem;
+		margin-left: 1.25rem;
+		padding: 1rem 2.4rem;
+		font-size: 1.05rem;
+	}
+
+	.hero-short-description {
+		max-width: 80%;
+		font-size: clamp(1.05rem, 4.2vw, 1.3rem);
+		line-height: 1.75;
+		margin-top: 8%;
+		text-align: left;
+		letter-spacing: 0.02em;
 	}
 }
 
@@ -195,6 +260,22 @@
 	.hero-title-stack {
 		gap: 1.2rem;
 	}
+
+	.hero-register-cta {
+		position: absolute;
+		top: 50%;
+		right: 4rem;
+		transform: translateX(-290%) translateY(400%) rotate(-25deg);
+		padding: 1.1rem 2.4rem;
+		font-size: 1.2rem;
+	}
+
+	.hero-register-cta:hover,
+	.hero-register-cta:focus-visible {
+		background: #d07e48;
+		color: #28160a;
+		transform: translateX(-293%) translateY(405%) rotate(-23deg);
+	}
 }
 
 @media (max-width: 1024px) {
@@ -206,10 +287,6 @@
 		max-width: 8.6ch;
 		text-align: left;
 	}
-
-	.hero-short-description {
-		text-align: justify;
-	}
 }
 
 @media (orientation: portrait) and (max-width: 1024px) {
@@ -219,10 +296,5 @@
 
 	.hero-title-stack {
 		justify-items: start;
-	}
-
-	.hero-event-title,
-	.hero-short-description {
-		text-align: justify;
 	}
 }

@@ -223,6 +223,15 @@
 				<FlipCountdown {flipDigits} {prevFlipDigits} {flipVersions} />
 			</div>
 
+			<a
+				href="https://docs.google.com/forms/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hero-register-cta"
+			>
+				Register now
+			</a>
+
 			<p class="hero-short-description">{eventInfo.description}</p>
 		</div>
 		<div class="hero-tree-spacer" aria-hidden="true"></div>

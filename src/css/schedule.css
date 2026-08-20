@@ -91,7 +91,6 @@
 	overflow: hidden;
 }
 
-/* Arrows placed strictly outside the card wrapper */
 .schedule-edge {
 	display: flex;
 	align-items: center;

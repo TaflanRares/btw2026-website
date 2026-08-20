@@ -17,7 +17,7 @@ export const eventInfo = {
 	dateLabel: '17–21 November 2026',
 	countdownTarget: '2026-11-17T09:00:00+02:00',
 	description:
-		'A week-long educational event for and by students of Transilvania University. XX Trainers for 4 days.'
+		'A week-long educational event for and by students of Transilvania University. XX Trainers for 5 days.'
 };
 
 // training titles have to be distinct inside a session
