@@ -1,12 +1,17 @@
 <script lang="ts">
-	import { base, resolve } from '$app/paths';
-	import { navItems } from '$lib/site-data';
+    import { base, resolve } from '$app/paths';
+    import { navItems } from '$lib/site-data';
 
-	let { registerNowUrl }: { registerNowUrl: string } = $props();
-	let navOpen = $state(false);
+    let { registerNowUrl }: { registerNowUrl: string } = $props();
+    let navOpen = $state(false);
+    let scrollY = $state(0);
+    
+    let isScrolled = $derived(scrollY > 400);
 </script>
 
-<header class="site-header">
+<svelte:window bind:scrollY={scrollY} />
+
+<header class="site-header" class:site-header--visible={isScrolled}>
 	<nav class="site-nav">
 		<a
 			href={resolve('/#home')}

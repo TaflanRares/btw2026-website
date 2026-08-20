@@ -147,12 +147,12 @@
 	}
 
 	.css-pumpkin--about1 {
-		left: clamp(5%, 20vw, 8%);
-		bottom: 10%;
-		transform: rotate(-3deg) scale(1.75);
+		display: none;
 	}
 
 	.css-pumpkin--about2 {
-		display: none;
+		right: clamp(1%, 15vw, 4%);
+		bottom: 84%;
+		transform: rotate(-8deg) scale(1.1);
 	}
 }

@@ -7,6 +7,24 @@
 	padding: 0 0.75rem 0.5rem;
 	background: linear-gradient(180deg, rgba(238, 213, 180, 0.12), rgba(238, 213, 180, 0));
 	backdrop-filter: none;
+
+	/* Initial hidden and disabled */
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(-10px);
+	transition:
+		opacity 300ms ease,
+		transform 300ms ease,
+		visibility 300ms ease;
+}
+
+/* Revealed when scrolled down */
+.site-header--visible {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: translateY(0);
 }
 
 .site-nav {

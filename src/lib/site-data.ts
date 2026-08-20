@@ -14,7 +14,7 @@ export const eventInfo = {
 	name: 'BEST Training Week 2026',
 	label: 'Autumn Edition',
 	location: 'Brașov, Romania',
-	dateLabel: '17–20 November 2026',
+	dateLabel: '17–21 November 2026',
 	countdownTarget: '2026-11-17T09:00:00+02:00',
 	description:
 		'A week-long educational event for and by students of Transilvania University. XX Trainers for 4 days.'
@@ -171,6 +171,46 @@ export const scheduleDays = [
 			},
 			{
 				date: '2026-11-20 12:00 Europe/Bucharest',
+				time: 'XX:XX',
+				title: 'Titlu ETC',
+				description: 'Descriere',
+				location: 'Locatie',
+				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
+				trainerPhoto:
+					'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
+			}
+		]
+	},
+	{
+		label: '21.11.2026',
+		title: 'Day 5',
+		summary: 'O scurta descriere a zilei',
+		sessions: [
+			{
+				date: '2026-11-21 12:00 Europe/Bucharest',
+				time: 'XX:XX',
+				title: 'Titlu J',
+				description: 'Descriere',
+				location: 'Locatie',
+				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
+				trainerPhoto:
+					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+			},
+			{
+				date: '2026-11-21 12:00 Europe/Bucharest',
+				time: 'XX:XX',
+				title: 'Titlu K',
+				description: 'Descriere',
+				location: 'Locatie',
+				trainer: 'Nume Trainer',
+				trainerSocial: { url: '', label: 'Trainer social media' },
+				trainerPhoto:
+					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
+			},
+			{
+				date: '2026-11-21 12:00 Europe/Bucharest',
 				time: 'XX:XX',
 				title: 'Titlu ETC',
 				description: 'Descriere',
