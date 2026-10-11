@@ -226,34 +226,34 @@ export const scheduleDays = [
 
 export const sponsors = [
 	{
-		name: 'UniTBv',
+		name: 'Universitatea Transilvania din Brașov',
 		logo: withBase('/images/logos/Sponsor1-UniTBv.png'),
 		alt: 'Transilvania University of Brașov logo'
 	},
 	{
-		name: 'Sponsor2',
-		logo: withBase('/images/logos/Sponsor2.png'),
-		alt: 'Sponsor 2 logo'
+		name: 'Banca Centrală Română',
+		logo: withBase('/images/logos/Sponsor2-BCR.webp'),
+		alt: 'Banca Centrală Română logo'
 	},
 	{
-		name: 'Sponsor3',
-		logo: withBase('/images/logos/Sponsor3.png'),
-		alt: 'Sponsor 3 logo'
+		name: 'Institutul de Cercetare-Dezvoltare al Universității Transilvania din Brașov',
+		logo: withBase('/images/logos/Sponsor3-ICDT.jpg'),
+		alt: 'Institutul de Cercetare-Dezvoltare al Universității Transilvania din Brașov logo'
 	},
 	{
-		name: 'Sponsor4',
-		logo: withBase('/images/logos/Sponsor4.png'),
-		alt: 'Sponsor 4 logo'
+		name: 'Zbor Hub',
+		logo: withBase('/images/logos/Sponsor4-zbor.jpg'),
+		alt: 'Zbor Hub logo'
 	},
 	{
-		name: 'Sponsor5',
-		logo: withBase('/images/logos/Sponsor5.png'),
-		alt: 'Sponsor 5 logo'
+		name: 'Bubble Waffles',
+		logo: withBase('/images/logos/Sponsor5-BubbleWaffles.jpg'),
+		alt: 'Bubble Waffles logo'
 	},
 	{
-		name: 'Sponsor6',
-		logo: withBase('/images/logos/Sponsor6.png'),
-		alt: 'Sponsor 6 logo'
+		name: 'Un Trancio e Via',
+		logo: withBase('/images/logos/Sponsor6-UnTrancioeVia.png'),
+		alt: 'Un Trancio e Via logo'
 	}
 ];
 
@@ -261,7 +261,14 @@ export const organizers = [
 	{
 		name: 'Bianca Nicoleta Crăciun',
 		title: 'Main Organiser',
+		email: 'bianca.nicoleta.craciun@BEST-eu.org',
 		photo: withBase('/images/BESTies/BiancaMO.webp')
+	},
+	{
+		name: 'Dimitrie Tabacaru',
+		title: 'President',
+		email: 'bv-board@BEST-eu.org',
+		photo: withBase('/images/BESTies/DimitriePresedinte.jpg')
 	},
 	{
 		name: 'Dănuț Boloca',

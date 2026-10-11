@@ -2,11 +2,15 @@
 	import { base } from '$app/paths';
 	import { socialLinks } from '../site-data';
 	import '../../css/footer.css';
-	import Pumpkin from '../components/Pumpkin.svelte';
 </script>
 
 <footer class="site-footer">
-	<Pumpkin class="css-pumpkin--footer" />
+	<img
+		src={`${base}/images/material/pumpkin_i.webp`}
+		alt=""
+		aria-hidden="true"
+		class="decor-pumpkin css-pumpkin--footer"
+	/>
 
 	<div class="footer-grid">
 		<!-- left: socials -->

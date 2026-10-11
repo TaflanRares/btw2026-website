@@ -96,6 +96,12 @@
 	margin-top: 0.5rem;
 }
 
+.css-pumpkin--footer {
+	right: clamp(1rem, 6vw, 6rem);
+	bottom: 155%;
+	transform: rotate(-6deg) scale(4);
+}
+
 @media (max-width: 768px) {
 	.site-footer,
 	.footer-grid {
@@ -130,5 +136,10 @@
 
 	.footer-copy {
 		order: 3;
+	}
+
+	.css-pumpkin--footer {
+		bottom: 110%;
+		transform: scale(2.2);
 	}
 }

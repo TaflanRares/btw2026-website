@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
+	import { base } from '$app/paths';
 	import { scheduleDays } from '$lib/site-data';
 
 	interface Props {
@@ -52,7 +53,10 @@
 				<span aria-hidden="true">‹</span>
 			</button>
 
-			<div class="schedule-card-wrapper">
+			<div
+				class="schedule-card-wrapper"
+				style={`--schedule-paper-image: url('${base}/images/material/papers.webp')`}
+			>
 				<div class="schedule-carousel" bind:this={scrollContainer} onscrollend={handleScrollEnd}>
 					{#each scheduleDays as day, dayIndex (day.title + dayIndex)}
 						<article class="schedule-day-card">

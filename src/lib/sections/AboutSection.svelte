@@ -1,11 +1,20 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import Pumpkin from '../components/Pumpkin.svelte';
 </script>
 
 <section id="about" class="content-section">
-	<Pumpkin class="css-pumpkin--about1" />
-	<Pumpkin class="css-pumpkin--about2" />
+	<img
+		src={`${base}/images/material/pumpkin_i.webp`}
+		alt=""
+		aria-hidden="true"
+		class="decor-pumpkin css-pumpkin--about1"
+	/>
+	<img
+		src={`${base}/images/material/pumpkin_i.webp`}
+		alt=""
+		aria-hidden="true"
+		class="decor-pumpkin css-pumpkin--about2"
+	/>
 
 	<div class="section-heading">
 		<h2 class="section-title">About us</h2>

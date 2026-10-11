@@ -136,6 +136,28 @@
 	white-space: nowrap;
 }
 
+.decor-pumpkin {
+	position: absolute;
+	z-index: 3;
+	width: clamp(2rem, 3vw, 5rem);
+	height: clamp(2rem, 3vw, 5rem);
+	pointer-events: none;
+	opacity: 1;
+	object-fit: contain;
+}
+
+.css-pumpkin--about1 {
+	left: clamp(9%, 20vw, 11%);
+	bottom: 15%;
+	transform: rotate(7deg) scale(3.5);
+}
+
+.css-pumpkin--about2 {
+	right: clamp(9%, 20vw, 13%);
+	bottom: 77%;
+	transform: rotate(-8deg) scale(3);
+}
+
 @media (max-width: 768px) {
 	.about-layout {
 		padding: 0 1rem;
@@ -181,5 +203,15 @@
 		letter-spacing: 0.1em;
 		line-height: 1.8;
 		text-align: center;
+	}
+
+	.css-pumpkin--about1 {
+		display: none;
+	}
+
+	.css-pumpkin--about2 {
+		right: clamp(1%, 15vw, 4%);
+		bottom: 84%;
+		transform: rotate(-8deg) scale(1.1);
 	}
 }

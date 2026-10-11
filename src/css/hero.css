@@ -1,6 +1,6 @@
 .hero-section {
 	position: relative;
-	overflow: hidden;
+	overflow: visible;
 }
 
 .hero-overlay {
@@ -106,11 +106,12 @@
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
-	overflow: hidden;
+	overflow: visible;
 }
 
 .hero-leaf-overlay {
-	z-index: 2;
+	inset: 0 0 -12rem 0;
+	z-index: 12;
 }
 
 .schedule-leaf-overlay {

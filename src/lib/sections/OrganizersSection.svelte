@@ -8,6 +8,26 @@
 
 	let { LeafSceneComponent = null }: Props = $props();
 
+	const organizerPriority: Record<string, number> = {
+		'Main Organiser': 0,
+		President: 1
+	};
+
+	const sortedOrganizers = $derived(
+		[...organizers].sort((a, b) => {
+			const priorityA = organizerPriority[a.title] ?? 2;
+			const priorityB = organizerPriority[b.title] ?? 2;
+			if (priorityA !== priorityB) {
+				return priorityA - priorityB;
+			}
+
+			return a.name.localeCompare(b.name);
+		})
+	);
+
+	const leadOrganizers = $derived(sortedOrganizers.slice(0, 2));
+	const teamOrganizers = $derived(sortedOrganizers.slice(2));
+
 	let activeFlutters = $state<Record<number, { x: number; y: number; rot: number }>>({});
 
 	function triggerFlutter(index: number) {
@@ -51,23 +71,63 @@
 		<div class="section-heading">
 			<h2 class="section-title">Event team</h2>
 		</div>
-		<div class="organizer-collage">
-			{#each organizers as organizer, index (organizer.name)}
-				{@const flutter = activeFlutters[index]}
+		<div class="organizer-collage organizer-collage--leads">
+			{#each leadOrganizers as organizer, index (organizer.name)}
+				{@const cardIndex = index}
+				{@const flutter = activeFlutters[cardIndex]}
 				<article
-					use:scrollObserver={index}
-					class="collage-card collage-card--{index % 6}"
+					use:scrollObserver={cardIndex}
+					class="collage-card collage-card--lead"
 					class:is-fluttering={!!flutter}
 					style:--flutter-x="{flutter?.x ?? 0}px"
 					style:--flutter-y="{flutter?.y ?? 0}px"
 					style:--flutter-rot="{flutter?.rot ?? 0}deg"
 				>
-					<button type="button" class="collage-card-button" onclick={() => triggerFlutter(index)}>
+					<button
+						type="button"
+						class="collage-card-button"
+						onclick={() => triggerFlutter(cardIndex)}
+					>
 						<div class="collage-stamp">
 							<img src={organizer.photo} alt={organizer.name} class="collage-photo" />
 							<div class="collage-copy">
 								<h3 class="collage-name">{organizer.name}</h3>
 								<p class="collage-role">{organizer.title}</p>
+								{#if organizer.email}
+									<a class="collage-email" href={`mailto:${organizer.email}`}>{organizer.email}</a>
+								{/if}
+							</div>
+						</div>
+					</button>
+				</article>
+			{/each}
+		</div>
+
+		<div class="organizer-collage organizer-collage--team">
+			{#each teamOrganizers as organizer, index (organizer.name)}
+				{@const cardIndex = index + 2}
+				{@const flutter = activeFlutters[cardIndex]}
+				<article
+					use:scrollObserver={cardIndex}
+					class="collage-card"
+					class:is-fluttering={!!flutter}
+					style:--flutter-x="{flutter?.x ?? 0}px"
+					style:--flutter-y="{flutter?.y ?? 0}px"
+					style:--flutter-rot="{flutter?.rot ?? 0}deg"
+				>
+					<button
+						type="button"
+						class="collage-card-button"
+						onclick={() => triggerFlutter(cardIndex)}
+					>
+						<div class="collage-stamp">
+							<img src={organizer.photo} alt={organizer.name} class="collage-photo" />
+							<div class="collage-copy">
+								<h3 class="collage-name">{organizer.name}</h3>
+								<p class="collage-role">{organizer.title}</p>
+								{#if organizer.email}
+									<a class="collage-email" href={`mailto:${organizer.email}`}>{organizer.email}</a>
+								{/if}
 							</div>
 						</div>
 					</button>
