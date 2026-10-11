@@ -22,9 +22,15 @@
 	<div class="about-layout">
 		<div class="about-hero">
 			<img
-				src={`${base}/images/BESTies/BESTGroupPhoto.webp`}
+				src={`${base}/images/BESTies/BESTGroupPhoto.jpg`}
 				alt="BEST Brașov members"
 				class="about-hero-image"
+			/>
+			<img
+				src={`${base}/images/material/cornerstamp.webp`}
+				alt=""
+				aria-hidden="true"
+				class="about-cornerstamp"
 			/>
 		</div>
 		<div class="about-grid">

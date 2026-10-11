@@ -254,6 +254,11 @@ export const sponsors = [
 		name: 'Un Trancio e Via',
 		logo: withBase('/images/logos/Sponsor6-UnTrancioeVia.png'),
 		alt: 'Un Trancio e Via logo'
+	},
+	{
+		name: 'Captain Bean',
+		logo: withBase('/images/logos/Sponsor7-CaptainBean.webp'),
+		alt: 'Captain Bean logo'
 	}
 ];
 

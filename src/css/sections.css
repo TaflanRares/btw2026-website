@@ -43,10 +43,28 @@
 }
 
 .about-hero {
+	position: relative;
 	width: min(100%, 58rem);
 	height: 34rem;
 	margin: 0 auto;
-	overflow: hidden;
+	padding: clamp(0.4rem, 0.8vw, 0.65rem);
+	background: linear-gradient(145deg, #f6e8cf, #f2dec0);
+	border-radius: 0.8rem 1.15rem 0.95rem 1.25rem;
+	box-shadow:
+		0 20px 36px rgba(96, 53, 23, 0.22),
+		0 6px 12px rgba(96, 53, 23, 0.12);
+	transform: rotate(-0.85deg);
+	overflow: visible;
+}
+
+.about-hero::before {
+	content: '';
+	position: absolute;
+	inset: clamp(0.18rem, 0.35vw, 0.32rem);
+	border: 1px solid rgba(134, 88, 49, 0.28);
+	border-radius: 0.7rem 1.05rem 0.85rem 1.15rem;
+	pointer-events: none;
+	z-index: 1;
 }
 
 .about-hero-image {
@@ -56,6 +74,20 @@
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
+	border-radius: 0.55rem 0.9rem 0.7rem 1.05rem;
+	box-shadow: 0 8px 14px rgba(96, 53, 23, 0.16);
+}
+
+.about-cornerstamp {
+	position: absolute;
+	top: clamp(-1.35rem, -2vw, -0.9rem);
+	right: clamp(-1.45rem, -2.2vw, -1rem);
+	width: clamp(4.8rem, 10vw, 7.4rem);
+	height: auto;
+	transform: rotate(8deg);
+	pointer-events: none;
+	filter: drop-shadow(0 8px 14px rgba(96, 53, 23, 0.22));
+	z-index: 3;
 }
 
 .about-grid {
@@ -166,11 +198,20 @@
 	.about-hero {
 		width: 100%;
 		height: 22rem;
+		padding: 0.4rem;
+		transform: none;
 	}
 
 	.about-hero-image {
 		height: 100%;
 		min-height: 0;
+		border-radius: 0.5rem 0.75rem 0.65rem 0.85rem;
+	}
+
+	.about-cornerstamp {
+		top: -1rem;
+		right: -0.8rem;
+		width: clamp(4.2rem, 22vw, 5.6rem);
 	}
 
 	.about-grid {

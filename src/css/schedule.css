@@ -301,6 +301,14 @@ a.trainer-name:focus-visible {
 		padding: 0 0.25rem;
 	}
 
+	.schedule-card-wrapper {
+		background-color: #efe2cd;
+		background-image: var(--schedule-paper-image), var(--schedule-paper-image);
+		background-repeat: repeat-y, repeat-y;
+		background-size: 106% auto, 106% auto;
+		background-position: top center, center 5rem;
+	}
+
 	.schedule-day-card {
 		padding: 1rem;
 	}
