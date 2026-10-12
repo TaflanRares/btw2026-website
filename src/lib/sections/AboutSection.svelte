@@ -36,12 +36,13 @@
 		<div class="about-grid">
 			<div class="about-story">
 				<p class="about-copy">
-					BEST Brașov is a student-run non-profit organisation dedicated to developing students,
-					through educational involvement, complementary education and career support.
+					BEST Brașov is a student-run non-profit organisation, established in 1997,
+					dedicated to developing students, through educational involvement, complementary education
+					and career support.
 				</p>
 				<p class="about-copy">
-					BEST Training Week, now on its XIX-th edition brings together students and professionals
-					with the goal of covering areas of interest.
+					BEST Brașov comes to the aid of students through events organized for them, such as workshops, 
+					academic courses or company presentations, which cover the needs and interests of university students. 
 				</p>
 			</div>
 			<div class="stats-grid">

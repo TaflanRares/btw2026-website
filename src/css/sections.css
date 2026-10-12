@@ -109,10 +109,10 @@
 .about-copy {
 	font-size: 1rem;
 	font-weight: 600;
-	letter-spacing: 0.12em;
-	line-height: 1.9;
+	letter-spacing: 0.035em;
+	line-height: 1.68;
 	text-align: justify;
-	text-transform: uppercase;
+	text-transform: none;
 	color: var(--page-text-soft);
 }
 
@@ -127,40 +127,64 @@
 }
 
 .stat-card {
+	position: relative;
 	display: grid;
-	grid-template-columns: auto minmax(0, 1fr);
-	align-items: center;
-	justify-content: center;
-	gap: 0.75rem;
-	border-radius: 1.25rem;
-	padding: 1rem;
-	color: #fffaf2;
-	box-shadow: 0 16px 24px rgba(122, 61, 19, 0.12);
+	justify-items: center;
+	align-content: center;
+	gap: 0.45rem;
+	min-height: 7.4rem;
+	border: 1px solid rgba(121, 76, 42, 0.26);
+	border-radius: 1.1rem;
+	padding: 0.9rem 0.75rem;
+	color: #5f3b25;
+	text-align: center;
+	box-shadow:
+		0 9px 16px rgba(122, 61, 19, 0.14),
+		0 2px 0 rgba(255, 248, 233, 0.35) inset;
+}
+
+.stat-card::before {
+	content: '';
+	position: absolute;
+	top: -0.42rem;
+	left: 50%;
+	width: 3rem;
+	height: 0.85rem;
+	background: rgba(255, 248, 231, 0.8);
+	border: 1px solid rgba(138, 95, 60, 0.18);
+	border-radius: 0.2rem;
+	transform: translateX(-50%) rotate(-6deg);
+	pointer-events: none;
 }
 
 .stat-card--accent {
-	background: var(--page-surface-strong);
+	background: #f3dfbf;
+	transform: rotate(-1deg);
 }
 
 .stat-card--secondary {
-	background: var(--page-surface-muted);
+	background: #eecfa8;
+	transform: rotate(0.9deg);
 }
 
 .stat-number {
-	font-size: 3rem;
+	font-size: clamp(2.4rem, 5.2vw, 3.15rem);
 	font-weight: 900;
 	line-height: 0.9;
+	letter-spacing: 0.02em;
+	text-shadow: none;
+	color: #8b4720;
 }
 
 .stat-label {
-	max-width: 9ch;
+	max-width: 12ch;
 	margin: 0;
-	font-size: 0.84rem;
+	font-size: 0.8rem;
 	font-weight: 700;
-	letter-spacing: 0.1em;
-	line-height: 1.45;
+	letter-spacing: 0.04em;
+	line-height: 1.3;
 	text-transform: uppercase;
-	color: #f6d7b2;
+	color: #6f4a2f;
 }
 
 .stat-label span {
@@ -233,16 +257,17 @@
 	}
 
 	.stat-card {
-		padding: 0.6rem 0.85rem;
-		gap: 0.5rem;
+		min-height: 6.2rem;
+		padding: 0.65rem 0.8rem;
+		gap: 0.35rem;
 		border-radius: 1rem;
 	}
 
 	.about-copy {
 		font-size: 1rem;
 		font-weight: 600;
-		letter-spacing: 0.1em;
-		line-height: 1.8;
+		letter-spacing: 0.03em;
+		line-height: 1.64;
 		text-align: center;
 	}
 

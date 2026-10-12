@@ -48,6 +48,14 @@
 		0 2px 0 rgba(255, 246, 233, 0.35);
 }
 
+.hero-event-title-line {
+	display: block;
+}
+
+.hero-event-title-line--first {
+	transform: translateX(-0.1ch);
+}
+
 .hero-countdown-stack {
 	display: flex;
 	width: fit-content;

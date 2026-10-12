@@ -215,7 +215,14 @@
 	<div class="hero-home-grid">
 		<div class="hero-home-copy">
 			<div class="hero-title-stack">
-				<h1 class="hero-event-title">{countdownTitle}</h1>
+				<h1 class="hero-event-title">
+					{#if countdownTitle === 'BEST TRAINING WEEK'}
+						<span class="hero-event-title-line hero-event-title-line--first">BEST</span>
+						<span class="hero-event-title-line">TRAINING WEEK</span>
+					{:else}
+						{countdownTitle}
+					{/if}
+				</h1>
 			</div>
 
 			<div class="hero-countdown-stack">

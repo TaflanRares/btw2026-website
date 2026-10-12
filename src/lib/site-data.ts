@@ -237,7 +237,7 @@ export const sponsors = [
 	},
 	{
 		name: 'Institutul de Cercetare-Dezvoltare al Universității Transilvania din Brașov',
-		logo: withBase('/images/logos/Sponsor3-ICDT.jpg'),
+		logo: withBase('/images/logos/Sponsor3-ICDT.webp'),
 		alt: 'Institutul de Cercetare-Dezvoltare al Universității Transilvania din Brașov logo'
 	},
 	{
@@ -252,7 +252,7 @@ export const sponsors = [
 	},
 	{
 		name: 'Un Trancio e Via',
-		logo: withBase('/images/logos/Sponsor6-UnTrancioeVia.png'),
+		logo: withBase('/images/logos/Sponsor6-UnTrancioeVia.webp'),
 		alt: 'Un Trancio e Via logo'
 	},
 	{

@@ -11,7 +11,7 @@
 
 .organizer-collage {
 	display: grid;
-	gap: 0.8rem;
+	gap: 0.65rem;
 	max-width: 72rem;
 	width: 100%;
 	margin: 0 auto;
@@ -53,8 +53,8 @@
 	--base-x: 0px;
 	--base-y: 0px;
 	--stamp-rotation: 0deg;
-	--card-scale: 0.98;
-	--card-scale-hover: 1.02;
+	--card-scale: 0.92;
+	--card-scale-hover: 0.96;
 	--flutter-x: 0px;
 	--flutter-y: 0px;
 	--flutter-rot: 0deg;
@@ -84,8 +84,8 @@
 
 .collage-card--lead {
 	--base-y: 1px;
-	--card-scale: 1.06;
-	--card-scale-hover: 1.1;
+	--card-scale: 0.99;
+	--card-scale-hover: 1.03;
 }
 
 .collage-card.is-fluttering {
@@ -166,6 +166,10 @@
 		conic-gradient(#000 0 0) content-box;
 }
 
+.organizer-collage--team .collage-stamp {
+	aspect-ratio: 4 / 4.45;
+}
+
 @media (min-width: 961px) {
 	.organizer-collage--leads {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -226,7 +230,7 @@
 	.organizer-collage {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		grid-template-rows: none;
-		gap: 0.75rem;
+		gap: 0.65rem;
 	}
 
 	.organizer-collage--leads,
@@ -235,11 +239,28 @@
 		margin-bottom: 0.75rem;
 	}
 
+	.organizer-collage--leads {
+		width: 100%;
+		max-width: min(100%, 30rem);
+		column-gap: 0.45rem;
+		margin: 0 auto 0.75rem;
+	}
+
+	.organizer-collage--team {
+		width: 100%;
+		margin: 0 auto;
+	}
+
 	.collage-card,
 	.collage-card:nth-child(n) {
 		--base-y: 0px;
 		--base-x: 0px;
 		--stamp-rotation: 0deg;
+	}
+
+	.collage-card--lead {
+		--card-scale: 0.96;
+		--card-scale-hover: 0.99;
 	}
 
 	.collage-copy h3 {
@@ -256,7 +277,7 @@
 	.organizers-section .organizer-collage--leads {
 		display: grid !important;
 		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-		column-gap: 3rem !important;
+		column-gap: 2.2rem !important;
 	}
 
 	.organizers-section .organizer-collage--team {
