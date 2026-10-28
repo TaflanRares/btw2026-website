@@ -7,12 +7,6 @@
 		src={`${base}/images/material/pumpkin_i.webp`}
 		alt=""
 		aria-hidden="true"
-		class="decor-pumpkin css-pumpkin--about1"
-	/>
-	<img
-		src={`${base}/images/material/pumpkin_i.webp`}
-		alt=""
-		aria-hidden="true"
 		class="decor-pumpkin css-pumpkin--about2"
 	/>
 
@@ -57,4 +51,10 @@
 			</div>
 		</div>
 	</div>
+	<img
+		src={`${base}/images/material/pumpkin_i.webp`}
+		alt=""
+		aria-hidden="true"
+		class="decor-pumpkin css-pumpkin--about1"
+	/>
 </section>

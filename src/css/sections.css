@@ -37,6 +37,7 @@
 
 /* About Section Specific Layout */
 .about-layout {
+	position: relative;
 	margin: 0 auto;
 	max-width: 80rem;
 	padding: 0 1rem;
@@ -203,7 +204,7 @@
 }
 
 .css-pumpkin--about1 {
-	left: clamp(9%, 20vw, 11%);
+	left: clamp(6%, 18vw, 10%);
 	bottom: 15%;
 	transform: rotate(7deg) scale(3.5);
 }
@@ -217,6 +218,7 @@
 @media (max-width: 768px) {
 	.about-layout {
 		padding: 0 1rem;
+		position: relative;
 	}
 
 	.about-hero {
@@ -272,7 +274,15 @@
 	}
 
 	.css-pumpkin--about1 {
-		display: none;
+		position: relative;
+		left: auto;
+		right: auto;
+		bottom: auto;
+		display: block;
+		width: clamp(3.2rem, 12vw, 5rem);
+		height: clamp(3.2rem, 12vw, 5rem);
+		margin: 1.25rem auto 0;
+		transform: rotate(0deg) scale(1);
 	}
 
 	.css-pumpkin--about2 {
