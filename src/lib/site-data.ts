@@ -78,7 +78,7 @@ export const scheduleDays = [
 				trainer: 'Andrada Ascate',
 				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
-					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+					''
 			},
 			{
 				date: '2026-11-18 12:00 Europe/Bucharest',
@@ -89,7 +89,7 @@ export const scheduleDays = [
 				trainer: 'Ștefan Dima',
 				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
-					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
+					''
 			},
 			{
 				date: '2026-11-18 12:00 Europe/Bucharest',
@@ -104,7 +104,7 @@ export const scheduleDays = [
 							label: 'Claudia Stoica LinkedIn search'
 						},
 						photo:
-							'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
+							''
 					},
 					{
 						name: 'Patricia Dorobanțu',
@@ -113,7 +113,7 @@ export const scheduleDays = [
 							label: 'Patricia Dorobanțu LinkedIn search'
 						},
 						photo:
-							'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
+							''
 					}
 				]
 			}
@@ -134,7 +134,7 @@ export const scheduleDays = [
 				trainer: 'Amalia Popescu',
 				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
-					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+					''
 			},
 			{
 				date: '2026-11-19 12:00 Europe/Bucharest',
@@ -163,7 +163,7 @@ export const scheduleDays = [
 				trainer: 'Andrada Ascate',
 				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
-					'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80'
+					''
 			},
 			{
 				date: '2026-11-20 12:00 Europe/Bucharest',
@@ -174,7 +174,7 @@ export const scheduleDays = [
 				trainer: 'Nume Trainer',
 				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
-					'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80'
+					''
 			}
 		]
 	},

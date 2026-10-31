@@ -10,7 +10,7 @@
 	import OrganizersSection from '../lib/sections/OrganizersSection.svelte';
 	import Footer from '../lib/sections/Footer.svelte';
 
-	const registerNowUrl = 'https://docs.google.com/forms/';
+	const registerNowUrl = 'https://forms.gle/hMiMbmR2CFPUCUrh8';
 </script>
 
 <svelte:head>

@@ -233,7 +233,7 @@
 			<p class="hero-short-description">{eventInfo.description}</p>
 
 			<a
-				href="https://docs.google.com/forms/"
+				href="https://forms.gle/hMiMbmR2CFPUCUrh8"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="hero-register-cta"
