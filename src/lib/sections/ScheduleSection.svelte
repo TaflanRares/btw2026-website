@@ -77,7 +77,7 @@
 
 			<div
 				class="schedule-card-wrapper"
-				style={`--schedule-paper-image: url('${base}/images/material/papers.webp'); --schedule-map-icon: url('${base}/images/material/MapIcon.jpg')`}
+				style={`--schedule-paper-image: url('${base}/images/material/papers.webp')`}
 			>
 				<div class="schedule-carousel" bind:this={scrollContainer} onscrollend={handleScrollEnd}>
 					{#each scheduleDays as day, dayIndex (day.title + dayIndex)}
@@ -98,7 +98,6 @@
 											class="schedule-day-location-link"
 											aria-label={`Open location in Google Maps: ${day.location.venue}, ${day.location.street}`}
 										>
-											<span class="schedule-location-icon" aria-hidden="true"></span>
 											<span class="schedule-location-text">
 												<span>{day.location.venue}</span>
 												<span>{day.location.street}</span>
@@ -114,15 +113,18 @@
 								{#each day.sessions as session (session.time + session.title)}
 									<div class="session-item">
 										<div class="session-content">
-											<div class="session-title-row">
-												{#if session.sessionLogo}
-													<img
-														src={session.sessionLogo}
-														alt={`${session.title} logo`}
-														class="session-logo"
-													/>
-												{/if}
-												<h4 class="session-title">{session.title}</h4>
+											<div class="session-head">
+												<div class="session-title-row">
+													{#if session.sessionLogo}
+														<img
+															src={session.sessionLogo}
+															alt={`${session.title} logo`}
+															class="session-logo"
+														/>
+													{/if}
+													<h4 class="session-title">{session.title}</h4>
+												</div>
+												<p class="session-time session-time--inline">{session.time}</p>
 											</div>
 											{#if session.trainers?.length}
 												<div class="trainer-row">
@@ -180,9 +182,6 @@
 												</div>
 											{/if}
 											<p class="session-description">{session.description}</p>
-										</div>
-										<div class="session-meta">
-											<p class="session-time">{session.time}</p>
 										</div>
 									</div>
 								{/each}

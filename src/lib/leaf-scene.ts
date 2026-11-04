@@ -10,7 +10,7 @@ type LeafDefinition = {
 const leafDefinitions: LeafDefinition[] = [
 	{
 		id: 1,
-		path: 'M 70 690 C 200 560, 320 430, 430 310 S 650 120, 900 145',
+		path: 'M 70 760 C 200 660, 320 555, 430 450 S 650 305, 900 280',
 		size: 26,
 		start: 0,
 		end: 0.92,
@@ -18,7 +18,7 @@ const leafDefinitions: LeafDefinition[] = [
 	},
 	{
 		id: 2,
-		path: 'M 240 740 C 380 600, 500 455, 610 305 S 830 105, 1060 180',
+		path: 'M 240 805 C 380 700, 500 575, 610 455 S 830 285, 1060 320',
 		size: 24,
 		start: 0,
 		end: 0.94,
@@ -26,7 +26,7 @@ const leafDefinitions: LeafDefinition[] = [
 	},
 	{
 		id: 3,
-		path: 'M 140 760 C 280 645, 420 505, 540 340 S 760 90, 990 150',
+		path: 'M 140 830 C 280 735, 420 610, 540 495 S 760 295, 990 300',
 		size: 28,
 		start: 0,
 		end: 0.9,
@@ -43,11 +43,35 @@ export function createLeafScene(root: HTMLElement, leafImageUrls: string[] = [])
 	let startOffset = root.offsetTop;
 	let range = 1;
 	let frameRequested = false;
+	let startDelayVh = 0.22;
+	let travelWindow = 1.7;
+	let travelScale = 0.82;
+	let rotationTravel = 160;
 
 	const documentHeight = () =>
 		Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, 1);
 
+	function applyViewportTuning() {
+		const isMobileViewport =
+			window.matchMedia('(max-width: 768px)').matches ||
+			window.matchMedia('(orientation: portrait) and (max-width: 960px)').matches;
+
+		if (isMobileViewport) {
+			startDelayVh = 0.34;
+			travelWindow = 2.25;
+			travelScale = 0.56;
+			rotationTravel = 96;
+			return;
+		}
+
+		startDelayVh = 0.22;
+		travelWindow = 1.7;
+		travelScale = 0.7;
+		rotationTravel = 160;
+	}
+
 	function recalcLayout() {
+		applyViewportTuning();
 		startOffset = root.offsetTop;
 		range = Math.max(documentHeight() - startOffset - window.innerHeight * 0.35, 1);
 	}
@@ -55,26 +79,26 @@ export function createLeafScene(root: HTMLElement, leafImageUrls: string[] = [])
 	function updateLeaf(leaf: HTMLElement, index: number, currentScroll: number, totalRange: number) {
 		const definition = leafDefinitions[index % leafDefinitions.length];
 		const variant = Math.floor(index / leafDefinitions.length);
-		const travelProgress = clamp(currentScroll / (totalRange * 1.3), 0, 1);
+		const travelProgress = clamp(currentScroll / (totalRange * travelWindow), 0, 1);
 		const eased = clamp(
-			definition.start + (definition.end - definition.start) * travelProgress + variant * 0.07,
+			definition.start + (definition.end * travelScale - definition.start) * travelProgress + variant * 0.05,
 			0,
 			1
 		);
 
-		leaf.style.setProperty('opacity', String(eased > 0 && eased < 0.98 ? '1' : '0'));
+		leaf.style.setProperty('opacity', '1');
 		leaf.style.setProperty('offset-distance', `${eased * 100}%`);
 		leaf.style.setProperty(
 			'transform',
-			`rotate(${definition.rotation + travelProgress * 260 + variant * 18}deg)`
+			`rotate(${definition.rotation + travelProgress * rotationTravel + variant * 12}deg)`
 		);
 	}
 
 	function update() {
 		const currentScroll = clamp(
-			window.scrollY - startOffset + window.innerHeight * 0.05,
+			window.scrollY - startOffset - window.innerHeight * startDelayVh,
 			0,
-			range * 1.3
+			range * travelWindow
 		);
 		leaves.forEach((leaf, index) => updateLeaf(leaf, index, currentScroll, range));
 		frameRequested = false;

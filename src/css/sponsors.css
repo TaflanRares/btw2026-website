@@ -52,13 +52,6 @@
 	transform: rotate(2deg);
 }
 
-@media (min-width: 768px) {
-	.mobile-only-band {
-		display: none;
-		/* Hides second reel on desktop */
-	}
-}
-
 .sponsor-band::before {
 	content: '';
 	position: absolute;

@@ -8,25 +8,8 @@
 
 	let { LeafSceneComponent = null }: Props = $props();
 
-	const organizerPriority: Record<string, number> = {
-		'Main Organiser': 0,
-		President: 1
-	};
-
-	const sortedOrganizers = $derived(
-		[...organizers].sort((a, b) => {
-			const priorityA = organizerPriority[a.title] ?? 2;
-			const priorityB = organizerPriority[b.title] ?? 2;
-			if (priorityA !== priorityB) {
-				return priorityA - priorityB;
-			}
-
-			return a.name.localeCompare(b.name);
-		})
-	);
-
-	const leadOrganizers = $derived(sortedOrganizers.slice(0, 2));
-	const teamOrganizers = $derived(sortedOrganizers.slice(2));
+	const leadOrganizers = $derived(organizers.slice(0, 2));
+	const teamOrganizers = $derived(organizers.slice(2));
 
 	let activeFlutters = $state<Record<number, { x: number; y: number; rot: number }>>({});
 

@@ -105,6 +105,7 @@
 		const controls = new OrbitControls(camera, renderer.domElement);
 		const dummy = new THREE.Object3D();
 		const matrix = new THREE.Matrix4();
+		const inwardDir = new THREE.Vector3();
 		const pointer = new THREE.Vector2();
 		const raycaster = new THREE.Raycaster();
 		const dlight01 = new THREE.DirectionalLight(0xcccccc, 2.05);
@@ -114,6 +115,30 @@
 		const cameraStart = new THREE.Vector3(-7.1, 1.6, -10.9);
 		const cameraTarget = new THREE.Vector3(1.55, 3.05, 0);
 		const pumpkinGroup = new THREE.Group();
+		const shadowCanvas = document.createElement('canvas');
+		shadowCanvas.width = 256;
+		shadowCanvas.height = 256;
+		const shadowCtx = shadowCanvas.getContext('2d');
+		if (shadowCtx) {
+			const radial = shadowCtx.createRadialGradient(128, 128, 24, 128, 128, 124);
+			radial.addColorStop(0, 'rgba(48, 26, 12, 0.34)');
+			radial.addColorStop(0.45, 'rgba(48, 26, 12, 0.19)');
+			radial.addColorStop(0.72, 'rgba(48, 26, 12, 0.07)');
+			radial.addColorStop(1, 'rgba(48, 26, 12, 0)');
+			shadowCtx.fillStyle = radial;
+			shadowCtx.fillRect(0, 0, shadowCanvas.width, shadowCanvas.height);
+		}
+		const groundShadowTexture = new THREE.CanvasTexture(shadowCanvas);
+		groundShadowTexture.colorSpace = THREE.SRGBColorSpace;
+		const groundShadow = new THREE.Mesh(
+			new THREE.PlaneGeometry(3.7, 2.05),
+			new THREE.MeshBasicMaterial({
+				map: groundShadowTexture,
+				transparent: true,
+				opacity: 0.68,
+				depthWrite: false
+			})
+		);
 
 		const noiseMap = new THREE.TextureLoader().load(
 			'https://raw.githubusercontent.com/ceramicSoda/treeshader/main/assets/noise.png'
@@ -174,8 +199,13 @@
 			controls.enableZoom = false;
 			controls.enableDamping = false;
 			controls.autoRotate = false;
+			groundShadow.scale.set(0.9, 0.9, 1);
 		}
+		groundShadow.rotation.x = -Math.PI / 2;
+		groundShadow.position.set(0.12, 0.02, 0.08);
+		groundShadow.renderOrder = 1;
 		tree.group.position.copy(treeOffset);
+		tree.group.add(groundShadow);
 		scene.add(dlight01, fillLight, tree.group, pumpkinGroup, rayPlane);
 
 		let frameId = 0;
@@ -349,6 +379,8 @@
 				const bbox = new THREE.Box3().setFromObject(crownMesh);
 				leavesMat.uniforms.uBoxMin.value.copy(bbox.min);
 				leavesMat.uniforms.uBoxSize.value.copy(bbox.getSize(new THREE.Vector3()));
+				const crownCenter = bbox.getCenter(new THREE.Vector3());
+				const crownHeight = Math.max(bbox.max.y - bbox.min.y, 0.001);
 
 				tree.leavesCount = Math.ceil(positionAttr.count * 0.65);
 				tree.deadID = [];
@@ -356,10 +388,21 @@
 
 				for (let leafIndex = 0; leafIndex < tree.leavesCount; leafIndex++) {
 					const sourceIndex = Math.floor((leafIndex * positionAttr.count) / tree.leavesCount);
+					const sourceX = positionAttr.array[sourceIndex * 3];
+					const sourceY = positionAttr.array[sourceIndex * 3 + 1];
+					const sourceZ = positionAttr.array[sourceIndex * 3 + 2];
+					const normalizedHeight = (sourceY - bbox.min.y) / crownHeight;
+					const branchInfluence = Math.pow(1 - THREE.MathUtils.clamp(normalizedHeight, 0, 1), 1.85);
+					const branchInset = 0.24 * branchInfluence;
+
+					inwardDir
+						.set(crownCenter.x - sourceX, 0, crownCenter.z - sourceZ)
+						.normalize()
+						.multiplyScalar(branchInset);
 					dummy.position.set(
-						positionAttr.array[sourceIndex * 3],
-						positionAttr.array[sourceIndex * 3 + 1],
-						positionAttr.array[sourceIndex * 3 + 2]
+						sourceX + inwardDir.x,
+						sourceY,
+						sourceZ + inwardDir.z
 					);
 					dummy.lookAt(
 						dummy.position.x + normalAttr.array[sourceIndex * 3],
@@ -421,6 +464,9 @@
 			controls.dispose();
 			renderer.dispose();
 			noiseMap.dispose();
+			groundShadowTexture.dispose();
+			groundShadow.geometry.dispose();
+			(groundShadow.material as THREE.Material).dispose();
 			leavesMat.dispose();
 			scene.clear();
 		};

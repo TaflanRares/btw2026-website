@@ -138,11 +138,7 @@
 			InternalLeafSceneComponent = leafModule.default;
 		};
 
-		if ('requestIdleCallback' in window) {
-			(window as any).requestIdleCallback(() => void load(), { timeout: 1500 });
-		} else {
-			setTimeout(() => void load(), 320);
-		}
+		void load();
 	}
 
 	async function loadTreeScene() {

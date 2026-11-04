@@ -37,19 +37,20 @@ export const scheduleDays = [
 			{
 				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: '14:00-16:00',
-				title: 'Preh',
-				description: 'A hands-on workshop about automotive electronic systems architecture. gain practical insights into hardware development, as well as the roles of Hardware Architect and Hardware Developer!',
+				title: 'Automotive Architecture',
+				description: 'A hands-on workshop where you can gain practical insights into hardware development, as well as the roles of Hardware Architect and Hardware Developer!',
 				location: zborHubLocation,
 				trainer: 'Barbu Adrian',
 				trainerSocial: { url: 'https://ro.linkedin.com/in/adrian-barbu-77b595213', label: 'Trainer LinkedIn' },
-				trainerPhoto: withBase('/images/trainers/PrehTrain.jpg')	
+				trainerPhoto: withBase('/images/trainers/PrehTrain.jpg'),
+				sessionLogo: withBase('/images/logos/Preh_Logo.webp'),	
 			},
 			{
 				date: '2026-11-17 12:00 Europe/Bucharest',
 				time: '16:00-18:00',
 				title: 'LEADERS Foundation ',
 				description: 'You will discover how to improve the management of your physical and mental energy so that you can achieve your goals and face specific challenges.',
-				sessionLogo: withBase('/images/logos/LeadersFoundation.png'),
+				sessionLogo: withBase('/images/logos/LeadersFoundationSmall.png'),
 			},
 			{
 				date: '2026-11-17 12:00 Europe/Bucharest',
@@ -59,7 +60,8 @@ export const scheduleDays = [
 				location: zborHubLocation,
 				trainer: 'Constantinescu Sebastian',
 				trainerSocial: { url: 'https://ro.linkedin.com/in/constantinescu-sebi-b76493278', label: 'Trainer LinkedIn' },
-				trainerPhoto: withBase('/images/trainers/RCTTrain.jpg')
+				trainerPhoto: withBase('/images/trainers/RCTTrain.jpg'),
+				sessionLogo: withBase('/images/logos/RCT.png'),	
 			}
 		]
 	},
@@ -171,7 +173,7 @@ export const scheduleDays = [
 				title: 'InnoEduLab',
 				description: 'In this interactive leadership workshop, we skip the cheesy motivational quotes and overcomplicated theories for two hours of practical exercises and honest conversations.',
 				location: zborHubLocation,
-				trainer: 'Nume Trainer',
+				trainer: '',
 				trainerSocial: { url: '', label: 'Trainer social media' },
 				trainerPhoto:
 					''
@@ -202,7 +204,7 @@ export const scheduleDays = [
 				location: zborHubLocation,
 				trainer: 'Ana Florea',
 				trainerSocial: { url: 'https://linktr.ee/zborhub.brasov', label: 'Zbor Hub Brasov linktree' },
-				trainerPhoto: withBase('/images/logos/Sponsor4-zbor.jpg')
+				sessionLogo: withBase('/images/logos/Sponsor4-zbor.jpg')
 			}
 		]
 	}
@@ -243,6 +245,41 @@ export const sponsors = [
 		name: 'Captain Bean',
 		logo: withBase('/images/logos/Sponsor7-CaptainBean.webp'),
 		alt: 'Captain Bean logo'
+	},
+	{
+		name: 'Radio Campus Transilvania',
+		logo: withBase('/images/logos/RCT.png'),
+		alt: 'Radio Campus Transilvania logo'
+	},
+	{
+		name: 'Preh',
+		logo: withBase('/images/logos/Preh_Logo.webp'),
+		alt: 'Preh logo'
+	},
+	{
+		name: 'Nuclearelectrica',
+		logo: withBase('/images/logos/Nuclearelectrica.jpg'),
+		alt: 'Nuclearelectrica logo'
+	},
+	{
+		name: 'Filo Caffe',
+		logo: withBase('/images/logos/FiloCafe.png'),
+		alt: 'Filo Caffe logo'
+	},
+	{
+		name: 'Breasla Studenților la Psihologie si Pedagogie din Braşov',
+		logo: withBase('/images/logos/BSPP.jpg'),
+		alt: 'Breasla Studenților la Psihologie si Pedagogie din Braşov logo'
+	},
+	{
+		name: 'InnoEduLab',
+		logo: withBase('/images/logos/InnoEduLab.png'),
+		alt: 'InnoEduLab logo'
+	},
+	{
+		name: 'LEADERS Foundation',
+		logo: withBase('/images/logos/LeadersFoundationNume.jpg'),
+		alt: 'LEADERS Foundation logo'
 	}
 ];
 
@@ -262,12 +299,12 @@ export const organizers = [
 	{
 		name: 'Dănuț Boloca',
 		title: 'Fundraising Responsible',
-		photo: withBase('/images/BESTies/DanutFR.webp')
+		photo: withBase('/images/BESTies/DanutBoloca.jpg')
 	},
 	{
 		name: 'Florin Deicu',
 		title: 'Public Relations Responsible',
-		photo: withBase('/images/BESTies/FlorinPR.webp')
+		photo: withBase('/images/BESTies/FlorinPR.jpg')
 	},
 	{
 		name: 'Bianca Milea',
@@ -277,17 +314,22 @@ export const organizers = [
 	{
 		name: 'Miruna Ungureanu',
 		title: 'Graphic Design Responsible',
-		photo: withBase('/images/BESTies/MirunaGD.webp')
+		photo: withBase('/images/BESTies/MirunaGD.jpg')
 	},
 	{
-		name: 'Rareș Taflan',
-		title: 'IT Responsible',
-		photo: withBase('/images/BESTies/RaresIT.webp')
+		name: 'Andreea Corodeanu',
+		title: 'Graphic Design Responsible',
+		photo: withBase('/images/BESTies/AndreeaGD.jpg')
 	},
 	{
 		name: 'Matei Voaideș',
 		title: 'Logistics Responsible',
 		photo: withBase('/images/BESTies/MateiLog.webp')
+	},
+	{
+		name: 'Rareș Taflan',
+		title: 'IT Responsible',
+		photo: withBase('/images/BESTies/RaresIT.webp')
 	}
 ];
 
