@@ -2,7 +2,7 @@
 	import { base, resolve } from '$app/paths';
 	import { navItems } from '$lib/site-data';
 
-	let { registerNowUrl }: { registerNowUrl: string } = $props();
+	let { registerNowUrl, eventEnded }: { registerNowUrl: string; eventEnded: boolean } = $props();
 	let navOpen = $state(false);
 	let scrollY = $state(0);
 
@@ -74,15 +74,17 @@
 			{/each}
 		</div>
 
-		<a
-			href={registerNowUrl}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="nav-cta"
-			onclick={() => (navOpen = false)}
-		>
-			Register now
-		</a>
+		{#if !eventEnded}
+			<a
+				href={registerNowUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="nav-cta"
+				onclick={() => (navOpen = false)}
+			>
+				Register now
+			</a>
+		{/if}
 
 		<div id="mobile-nav-options" class="mobile-nav" class:mobile-nav--open={navOpen}>
 			{#each navItems as item (item.href)}

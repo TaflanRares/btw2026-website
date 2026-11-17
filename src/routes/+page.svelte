@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import '../css/main.css';
 	import { eventInfo } from '../lib/site-data';
 
@@ -11,6 +12,20 @@
 	import Footer from '../lib/sections/Footer.svelte';
 
 	const registerNowUrl = 'https://forms.gle/hMiMbmR2CFPUCUrh8';
+	const eventEndedAt = new Date(eventInfo.endedAt);
+
+	let eventEnded = $state(Date.now() >= eventEndedAt.getTime());
+
+	function syncEventEnded() {
+		eventEnded = Date.now() >= eventEndedAt.getTime();
+	}
+
+	onMount(() => {
+		syncEventEnded();
+		const timer = setInterval(syncEventEnded, 1000);
+
+		return () => clearInterval(timer);
+	});
 </script>
 
 <svelte:head>
@@ -26,10 +41,10 @@
 		<div class="page-glow-orb"></div>
 	</div>
 
-	<Navbar {registerNowUrl} />
+	<Navbar {registerNowUrl} {eventEnded} />
 
 	<main class="site-main">
-		<Hero />
+		<Hero {registerNowUrl} {eventEnded} />
 		<AboutSection />
 		<ScheduleSection />
 		<PartnersSection />

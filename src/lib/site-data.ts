@@ -2,6 +2,44 @@ import { base } from '$app/paths';
 
 const withBase = (path: string) => `${base}${path}`;
 
+type SocialLink = {
+	url: string;
+	label: string;
+};
+
+type DetailedLocation = {
+	venue: string;
+	street: string;
+	mapUrl: string;
+};
+
+type SessionTrainer = {
+	name: string;
+	social?: SocialLink;
+	photo?: string;
+};
+
+type Session = {
+	date: string;
+	time: string;
+	title: string;
+	description: string;
+	location?: DetailedLocation;
+	trainer?: string;
+	trainerSocial?: SocialLink;
+	trainerPhoto?: string;
+	sessionLogo?: string;
+	trainers?: SessionTrainer[];
+};
+
+type ScheduleDay = {
+	label: string;
+	title: string;
+	location: DetailedLocation;
+	summary: string;
+	sessions: Session[];
+};
+
 export const navItems: Array<{ label: string; href: `/#${string}` }> = [
 	{ label: 'Home', href: '/#home' },
 	{ label: 'About', href: '/#about' },
@@ -16,18 +54,19 @@ export const eventInfo = {
 	location: 'Brașov, Romania',
 	dateLabel: '17–21 November 2026',
 	countdownTarget: '2026-11-17T14:00:00+02:00',
+	endedAt: '2026-11-21T18:00:00+02:00',
 	description:
 		'A week-long educational event for and by students of Transilvania University. Join us for 12 training sessions over 5 days.'
 };
 
-export const zborHubLocation = {
+export const zborHubLocation: DetailedLocation = {
 	venue: 'Zbor Hub Brașov',
 	street: 'Str. Mureșenilor nr. 27',
 	mapUrl: 'https://maps.app.goo.gl/cqhtJJs9WPe4frdj6'
 };
 
 // training titles have to be distinct inside a session
-export const scheduleDays = [
+export const scheduleDays: ScheduleDay[] = [
 	{
 		label: '17.11.2026',
 		title: 'Day 1',
@@ -169,7 +208,7 @@ export const scheduleDays = [
 				date: '2026-11-20 12:00 Europe/Bucharest',
 				time: '16:00-18:00',
 				title: 'Leadership & Self-Awareness',
-				description: 'In this interactive leadership workshop, we skip the cheesy motivational quotes and overcomplicated theories for two hours of practical exercises and honest conversations.',
+				description: 'Leader for others? Start with yourself: How well do you actually know yourself? In this interactive 𝐥𝐞𝐚𝐝𝐞𝐫𝐬𝐡𝐢𝐩 workshop, we skip the cheesy motivational quotes and overcomplicated theories for two hours of practical exercises and honest conversations. Discover why great leadership begins with 𝐬𝐞𝐥𝐟-𝐚𝐰𝐚𝐫𝐞𝐧𝐞𝐬𝐬, what truly drives you, and why "I\'ll just do it myself" isn\'t always a winning strategy. Get ready for practical insights and a few genuine "aha, so that\'s what I do" moments!',
 				location: zborHubLocation,
 				trainer: 'Ancuța Duță',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -308,7 +347,7 @@ export const organizers = [
 	{
 		name: 'Bianca Milea',
 		title: 'Participants Experience Responsible',
-		photo: withBase('/images/BESTies/BiancaPAX.webp')
+		photo: withBase('/images/BESTies/BiancaPax.jpg')
 	},
 	{
 		name: 'Miruna Ungureanu',
