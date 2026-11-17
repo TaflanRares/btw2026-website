@@ -295,6 +295,10 @@
 }
 
 @media (orientation: portrait) and (max-width: 1024px) {
+	.hero-leaf-overlay {
+		display: none;
+	}
+
 	.hero-home-copy {
 		justify-items: start;
 	}
