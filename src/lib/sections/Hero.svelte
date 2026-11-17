@@ -72,11 +72,26 @@
 
 	// Target calculation setup
 	const eventStartDate = new Date(eventInfo.countdownTarget);
+
+	function getSessionStartDate(session: { date: string; time: string }) {
+		const datePart = session.date.split(' ')[0];
+		const startTime = session.time.match(/^(\d{1,2}:\d{2})/)?.[1];
+
+		if (datePart && startTime) {
+			const parsedFromSlot = new Date(`${datePart}T${startTime}:00+02:00`);
+			if (!Number.isNaN(parsedFromSlot.getTime())) {
+				return parsedFromSlot;
+			}
+		}
+
+		return new Date(session.date.replace(' Europe/Bucharest', '+02:00').replace(' ', 'T'));
+	}
+
 	const sessionTargets = scheduleDays
 		.flatMap((day) => day.sessions.map((session) => ({ session, day })))
 		.map(({ session, day }) => ({
 			...session,
-			date: new Date(session.date.replace(' Europe/Bucharest', '+02:00').replace(' ', 'T')),
+			date: getSessionStartDate(session),
 			dayLabel: day.label
 		}))
 		.filter((session) => !Number.isNaN(session.date.getTime()))
