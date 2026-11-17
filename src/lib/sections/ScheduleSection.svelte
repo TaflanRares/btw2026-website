@@ -54,6 +54,14 @@
 	function hasImage(url: unknown): url is string {
 		return typeof url === 'string' && url.trim().length > 0;
 	}
+
+	function getSharedTrainerPhoto(trainers: Array<{ photo?: unknown }> | undefined): string | null {
+		if (!trainers?.length) return null;
+		for (const trainer of trainers) {
+			if (hasImage(trainer.photo)) return trainer.photo;
+		}
+		return null;
+	}
 </script>
 
 <section id="schedule" class="schedule-section">
@@ -127,17 +135,18 @@
 												<p class="session-time session-time--inline">{session.time}</p>
 											</div>
 											{#if session.trainers?.length}
+												{@const sharedTrainerPhoto = getSharedTrainerPhoto(session.trainers)}
 												<div class="trainer-row">
+													{#if hasImage(sharedTrainerPhoto)}
+														<img
+															src={sharedTrainerPhoto}
+															alt={`${session.title} trainers`}
+															class="trainer-badge"
+														/>
+													{/if}
 													<div class="trainer-group">
 														{#each session.trainers as trainer (trainer.name)}
 															<div class="trainer-chip">
-																{#if hasImage(trainer.photo)}
-																	<img
-																		src={trainer.photo}
-																		alt={trainer.name}
-																		class="trainer-badge"
-																	/>
-																{/if}
 																{#if trainer.social?.url}
 																	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 																	<a
