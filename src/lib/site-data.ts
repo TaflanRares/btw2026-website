@@ -165,10 +165,21 @@ export const scheduleDays: ScheduleDay[] = [
 		summary: 'Learn to build your professional profile and use both hard and soft skillls to your advantage.',
 		sessions: [
 			{
+				date: '2026-11-20 12:00 Europe/Bucharest',
+				time: '14:00-16:00',
+				title: 'Leadership & Self-Awareness',
+				description: 'In this interactive leadership workshop, we skip the cheesy motivational quotes and discover why great leadership begins with self-awareness and why "I\'ll just do it myself" isn\'t always a winning strategy.',
+				location: zborHubLocation,
+				trainer: 'Ancuța Duță',
+				trainerSocial: { url: '', label: 'Trainer social media' },
+				trainerPhoto: withBase('/images/trainers/AncutaDuta.png'),
+				sessionLogo: withBase('/images/logos/InnoEduLab.png')
+			},
+			{
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: '16:00-18:00',
 				title: 'Personal Branding for Students',
-				description: 'How do recruiters see you? How do you highlight your potential when you\'re at the beginning of your journey? Join a practical workshop where you learn to transform your university projects and volunteer work into an attractive professional profile.',
+				description: 'How do recruiters see you? How do you highlight your potential? Join us and learn how to transform your university projects and volunteer work into an attractive professional profile.',
 				location: zborHubLocation,
 				trainer: 'Amalia Popescu',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -178,7 +189,7 @@ export const scheduleDays: ScheduleDay[] = [
 				date: '2026-11-19 12:00 Europe/Bucharest',
 				time: '18:00-20:00',
 				title: 'Nuclearelectrica - Career in the Nuclear Industry',
-				description: 'What skills do you need to develop and how do you build a successful career in one of the most complex and innovative industries? In this interactive workshop, you will explore the technical expertise (hard skills), interpersonal abilities (soft skills), and professional mindset essential for an environment driven by safety, performance, and responsibility',
+				description: 'How do you build a career in one of the most complex and innovative industries? We will explore the professional mindset and skills essential for an environment driven by safety, performance, and responsibility',
 				location: zborHubLocation,
 				trainer: 'Raluca Andreea Nedelcu',
 				trainerSocial: { url: '', label: 'Trainer social media' },
@@ -195,7 +206,7 @@ export const scheduleDays: ScheduleDay[] = [
 		sessions: [
 			{
 				date: '2026-11-20 12:00 Europe/Bucharest',
-				time: '14:00-15:00',
+				time: '14:00-16:00',
 				title: 'Your Financial Health Starts Today',
 				description: 'A practical training session designed to help you manage your money better, make smart financial decisions, and stay safe from online fraud. Through real-life examples and easy-to-apply advice, you will learn how to build healthy financial habits for the future.',
 				location: zborHubLocation,
@@ -204,17 +215,6 @@ export const scheduleDays: ScheduleDay[] = [
 				trainerPhoto: withBase('/images/trainers/AndraAscante.png'),
 				sessionLogo: withBase('/images/logos/Sponsor2-BCR.webp')
 			},
-			{
-				date: '2026-11-20 12:00 Europe/Bucharest',
-				time: '16:00-18:00',
-				title: 'Leadership & Self-Awareness',
-				description: 'Leader for others? Start with yourself: How well do you actually know yourself? In this interactive 𝐥𝐞𝐚𝐝𝐞𝐫𝐬𝐡𝐢𝐩 workshop, we skip the cheesy motivational quotes and overcomplicated theories for two hours of practical exercises and honest conversations. Discover why great leadership begins with 𝐬𝐞𝐥𝐟-𝐚𝐰𝐚𝐫𝐞𝐧𝐞𝐬𝐬, what truly drives you, and why "I\'ll just do it myself" isn\'t always a winning strategy. Get ready for practical insights and a few genuine "aha, so that\'s what I do" moments!',
-				location: zborHubLocation,
-				trainer: 'Ancuța Duță',
-				trainerSocial: { url: '', label: 'Trainer social media' },
-				trainerPhoto: withBase('/images/trainers/AncutaDuta.png'),
-				sessionLogo: withBase('/images/logos/InnoEduLab.png')
-			}
 		]
 	},
 	{
